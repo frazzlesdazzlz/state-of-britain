@@ -18,6 +18,23 @@ def latest_gdp_bulletin():
  if not month or not three: raise ValueError("GDP bulletin pattern not found")
  return float(month.group(1)),month.group(2),float(three.group(1)),three.group(2),url
 
+def latest_labour_bulletin():
+ url="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/uklabourmarket/latest"
+ req=urllib.request.Request(url,headers={"User-Agent":"State-of-Britain/1.1"})
+ with urllib.request.urlopen(req,timeout=25) as r:
+  html=r.read().decode("utf-8","ignore")
+ import re
+ def grab(pattern):
+  m=re.search(pattern,html,re.I|re.S)
+  if not m: raise ValueError("labour bulletin pattern not found")
+  return m
+ emp=grab(r"employment rate.*?estimated at\s*([0-9.]+)%\s*for\s*([A-Za-z]+ to [A-Za-z]+ 20[0-9]{2})")
+ unemp=grab(r"unemployment rate.*?estimated at\s*([0-9.]+)%\s*in\s*([A-Za-z]+ to [A-Za-z]+ 20[0-9]{2})")
+ inac=grab(r"economic inactivity rate.*?estimated at\s*([0-9.]+)%\s*in\s*([A-Za-z]+ to [A-Za-z]+ 20[0-9]{2})")
+ payroll=grab(r"early estimate of payrolled employees for\s*([A-Za-z]+ 20[0-9]{2}).*?to\s*([0-9.]+) million")
+ return (float(emp.group(1)),emp.group(2),float(unemp.group(1)),unemp.group(2),
+         float(inac.group(1)),inac.group(2),float(payroll.group(2)),payroll.group(1),url)
+
 def item(d,id):
  for g in d["groups"]:
   for x in g.get("items",[]):
@@ -39,6 +56,13 @@ def main():
   setv(d,"gdp_month",f"{mv:.1f}%",mp,"ONS",gurl,now,changes)
   setv(d,"gdp_3m",f"{tv:.1f}%",f"3 months to {tp}","ONS",gurl,now,changes)
  except Exception as e: errors.append("gdp:"+type(e).__name__)
+ try:
+  ev,ep,uv,up,iv,ip,pv,pp,lurl=latest_labour_bulletin()
+  setv(d,"employment",f"{ev:.1f}%",ep,"ONS",lurl,now,changes)
+  setv(d,"unemployment",f"{uv:.1f}%",up,"ONS",lurl,now,changes)
+  setv(d,"inactivity",f"{iv:.1f}%",ip,"ONS",lurl,now,changes)
+  setv(d,"payrolled",f"{pv:.1f}m",pp+" early estimate","ONS / HMRC PAYE RTI",lurl,now,changes)
+ except Exception as e: errors.append("labour:"+type(e).__name__)
  for id,s,ds,fmt,url in collectors:
   try:
    v,p=latest_month(s,ds); setv(d,id,fmt(v),p,"ONS",url,now,changes)
