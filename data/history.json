@@ -160,5 +160,12 @@
     "checked_at": "2026-09-27T19:49:48+00:00",
     "changes": [],
     "errors": []
+  },
+  {
+    "checked_at": "2026-09-27T19:51:28+00:00",
+    "changes": [],
+    "errors": [
+      "fy_borrowing:ValueError:could not convert string to float: ''"
+    ]
   }
 ]
