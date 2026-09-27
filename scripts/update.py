@@ -190,6 +190,8 @@ def latest_gbp_usd():
  if not vals: raise ValueError("GBP/USD observations missing")
  period,value=vals[-1]
  if not (0.5 <= value <= 2.5): raise ValueError("GBP/USD sanity check")
+ # Dashboard convention is USD per GBP. The download endpoint can expose the reciprocal quote.
+ if value < 1.0: value=1.0/value
  return value,period,"https://www.bankofengland.co.uk/statistics/exchange-rates"
 
 def latest_bitcoin_gbp():
