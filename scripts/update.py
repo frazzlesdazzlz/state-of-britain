@@ -195,7 +195,7 @@ def main():
   bv,bp=latest_from_series("J5II")
   if not (-100000 <= bv <= 100000): raise ValueError("monthly borrowing sanity check")
   burl="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/j5ii/pusf"
-  setv(d,"monthly_borrowing",f"£{bv/1000:.1f}bn",bp,"ONS",burl,now,changes)
+  setv(d,"monthly_borrowing",f"£{abs(bv)/1000:.1f}bn",bp,"ONS",burl,now,changes)
  except Exception as e: errors.append("monthly_borrowing:"+type(e).__name__+":"+str(e)[:80])
  try:
   debt,dp=latest_from_series("HF6W")
