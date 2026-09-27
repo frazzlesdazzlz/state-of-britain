@@ -1,4 +1,4 @@
-import json, urllib.request, datetime
+import json, urllib.request, datetime, re, html as html_lib
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]; DATA=ROOT/"data.json"; HISTORY=ROOT/"data/history.json"
 def get(url):
@@ -7,12 +7,18 @@ def get(url):
 def latest_month(series,dataset):
  j=get(f"https://api.ons.gov.uk/timeseries/{series}/dataset/{dataset}/data")
  rows=j.get("months",[]); x=rows[-1]; return float(str(x["value"]).replace(",","")),x.get("date",x.get("label","latest"))
+def page_text(url):
+ req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0 State-of-Britain/1.2"})
+ with urllib.request.urlopen(req,timeout=25) as r:
+  raw=r.read().decode("utf-8","ignore")
+ raw=re.sub(r"<script\\b[^>]*>.*?</script>"," ",raw,flags=re.I|re.S)
+ raw=re.sub(r"<style\\b[^>]*>.*?</style>"," ",raw,flags=re.I|re.S)
+ raw=re.sub(r"<[^>]+>"," ",raw)
+ return re.sub(r"\\s+"," ",html_lib.unescape(raw)).strip()
+
 def latest_gdp_bulletin():
  url="https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/gdpmonthlyestimateuk/latest"
- req=urllib.request.Request(url,headers={"User-Agent":"State-of-Britain/1.1"})
- with urllib.request.urlopen(req,timeout=25) as r:
-  html=r.read().decode("utf-8","ignore")
- import re
+ html=page_text(url)
  month=re.search(r"Monthly GDP (?:is estimated to have )?(?:grown|increased) by ([0-9.]+)% in ([A-Za-z]+ 20[0-9]{2})",html,re.I)
  three=re.search(r"Real gross domestic product \(GDP\) (?:is estimated to have )?(?:grown|increased) by ([0-9.]+)% in the three months to ([A-Za-z]+ 20[0-9]{2})",html,re.I)
  if not month or not three: raise ValueError("GDP bulletin pattern not found")
@@ -20,10 +26,7 @@ def latest_gdp_bulletin():
 
 def latest_labour_bulletin():
  url="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/uklabourmarket/latest"
- req=urllib.request.Request(url,headers={"User-Agent":"State-of-Britain/1.1"})
- with urllib.request.urlopen(req,timeout=25) as r:
-  html=r.read().decode("utf-8","ignore")
- import re
+ html=page_text(url)
  def grab(pattern):
   m=re.search(pattern,html,re.I|re.S)
   if not m: raise ValueError("labour bulletin pattern not found")
@@ -38,10 +41,7 @@ def latest_labour_bulletin():
 
 def latest_pay_bulletin():
  url="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/latest"
- req=urllib.request.Request(url,headers={"User-Agent":"State-of-Britain/1.1"})
- with urllib.request.urlopen(req,timeout=25) as r:
-  html=r.read().decode("utf-8","ignore")
- import re
+ html=page_text(url)
  weekly=re.search(r"estimated at £[0-9,]+ for total earnings and £([0-9,]+) for regular earnings in ([A-Za-z]+ 20[0-9]{2})",html,re.I)
  real=re.search(r"real terms.*?annual regular pay growth.*?([0-9.]+)% in ([A-Za-z]+ to [A-Za-z]+ 20[0-9]{2})",html,re.I|re.S)
  if not weekly or not real: raise ValueError("pay bulletin pattern not found")
@@ -49,10 +49,7 @@ def latest_pay_bulletin():
 
 def latest_housing_bulletin():
  url="https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/latest"
- req=urllib.request.Request(url,headers={"User-Agent":"State-of-Britain/1.1"})
- with urllib.request.urlopen(req,timeout=25) as r:
-  html=r.read().decode("utf-8","ignore")
- import re
+ html=page_text(url)
  rent=re.search(r"Average UK monthly private rent increased by ([0-9.]+)%, to £([0-9,]+), in the 12 months to ([A-Za-z]+ 20[0-9]{2})",html,re.I)
  house=re.search(r"Average UK house prices increased by ([0-9.]+)%, to £([0-9,]+), in the 12 months to ([A-Za-z]+ 20[0-9]{2})",html,re.I)
  if not rent or not house: raise ValueError("housing bulletin pattern not found")
@@ -60,10 +57,7 @@ def latest_housing_bulletin():
 
 def latest_bank_rate():
  url="https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate"
- req=urllib.request.Request(url,headers={"User-Agent":"State-of-Britain/1.1"})
- with urllib.request.urlopen(req,timeout=25) as r:
-  html=r.read().decode("utf-8","ignore")
- import re
+ html=page_text(url)
  rate=re.search(r"Current Bank Rate\s*([0-9.]+)%",html,re.I)
  nxt=re.search(r"Next due:\s*([0-9]{1,2} [A-Za-z]+ 20[0-9]{2})",html,re.I)
  if not rate: raise ValueError("Bank Rate pattern not found")
@@ -71,10 +65,7 @@ def latest_bank_rate():
 
 def latest_public_finances_bulletin():
  url="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/bulletins/publicsectorfinances/latest"
- req=urllib.request.Request(url,headers={"User-Agent":"State-of-Britain/1.1"})
- with urllib.request.urlopen(req,timeout=25) as r:
-  html=r.read().decode("utf-8","ignore")
- import re
+ html=page_text(url)
  def val(pattern):
   m=re.search(pattern,html,re.I|re.S)
   if not m: raise ValueError("public finance pattern not found")
@@ -96,7 +87,9 @@ def setv(d,id,display,period,source,url,now,changes):
  if not x:return
  old=x.get("display")
  x.update(display=display,period=period,source=source,source_url=url,retrieved_at=now)
- if old!=display:changes.append({"id":id,"from":old,"to":display,"at":now})
+ def norm(v):
+  return re.sub(r"(?<=^)[+](?=\\d)","",str(v)).replace(",","").strip()
+ if norm(old)!=norm(display):changes.append({"id":id,"from":old,"to":display,"at":now})
 def main():
  d=json.loads(DATA.read_text()); now=datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat(); changes=[]; errors=[]
  collectors=[
