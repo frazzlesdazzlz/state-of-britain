@@ -32,6 +32,8 @@ def latest_labour_bulletin():
  unemp=grab(r"unemployment rate.*?estimated at\s*([0-9.]+)%\s*in\s*([A-Za-z]+ to [A-Za-z]+ 20[0-9]{2})")
  inac=grab(r"economic inactivity rate.*?estimated at\s*([0-9.]+)%\s*in\s*([A-Za-z]+ to [A-Za-z]+ 20[0-9]{2})")
  payroll=grab(r"early estimate of payrolled employees for\s*([A-Za-z]+ 20[0-9]{2}).*?to\s*([0-9.]+) million")
+ ev=float(emp.group(1)); uv=float(unemp.group(1)); iv=float(inac.group(1))
+ if not (60 <= ev <= 90 and 0 <= uv <= 15 and 10 <= iv <= 35): raise ValueError("labour values failed sanity check")
  return (ev,emp.group(2),uv,unemp.group(2),iv,inac.group(2),float(payroll.group(2)),payroll.group(1),url)
 
 def latest_pay_bulletin():
