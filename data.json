@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "last_checked": "2026-09-27T20:04:07+00:00",
+  "last_checked": "2026-09-27T20:05:43+00:00",
   "changed_count": 0,
   "groups": [
     {
@@ -15,7 +15,7 @@
           "comparison": "+\u00a378.5bn y/y",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/hf6w/pusf",
-          "retrieved_at": "2026-09-27T20:04:07+00:00"
+          "retrieved_at": "2026-09-27T20:05:43+00:00"
         },
         {
           "id": "debt_gdp",
@@ -26,7 +26,7 @@
           "comparison": "-1.3pp y/y",
           "direction": "\u2193",
           "source_url": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/hf6x/pusf",
-          "retrieved_at": "2026-09-27T20:04:07+00:00"
+          "retrieved_at": "2026-09-27T20:05:43+00:00"
         },
         {
           "id": "monthly_borrowing",
@@ -37,7 +37,7 @@
           "comparison": "+\u00a32.9bn y/y",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/j5ii/pusf",
-          "retrieved_at": "2026-09-27T20:04:07+00:00"
+          "retrieved_at": "2026-09-27T20:05:43+00:00"
         },
         {
           "id": "fy_borrowing",
@@ -84,7 +84,7 @@
           "comparison": "+\u00a30.4bn y/y",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/nmfx/pusf",
-          "retrieved_at": "2026-09-27T20:04:07+00:00"
+          "retrieved_at": "2026-09-27T20:05:43+00:00"
         }
       ]
     },
@@ -341,7 +341,7 @@
           "comparison": "2.9% previous month",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7g7/mm23",
-          "retrieved_at": "2026-09-27T20:04:07+00:00"
+          "retrieved_at": "2026-09-27T20:05:43+00:00"
         },
         {
           "id": "pay",
@@ -352,7 +352,7 @@
           "comparison": "before tax, GB",
           "direction": "",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/latest",
-          "retrieved_at": "2026-09-27T20:04:07+00:00"
+          "retrieved_at": "2026-09-27T20:05:43+00:00"
         },
         {
           "id": "real_pay",
@@ -363,7 +363,7 @@
           "comparison": "y/y, CPIH-adjusted",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/latest",
-          "retrieved_at": "2026-09-27T20:04:07+00:00"
+          "retrieved_at": "2026-09-27T20:05:43+00:00"
         },
         {
           "id": "house",
@@ -374,7 +374,7 @@
           "comparison": "+1.4% y/y",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/latest",
-          "retrieved_at": "2026-09-27T20:04:07+00:00"
+          "retrieved_at": "2026-09-27T20:05:43+00:00"
         },
         {
           "id": "rent",
@@ -385,7 +385,7 @@
           "comparison": "+3.8% y/y",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/latest",
-          "retrieved_at": "2026-09-27T20:04:07+00:00"
+          "retrieved_at": "2026-09-27T20:05:43+00:00"
         }
       ]
     },
@@ -401,7 +401,7 @@
           "comparison": "vs June",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/gdpmonthlyestimateuktimeseriesdataset/current",
-          "retrieved_at": "2026-09-27T20:04:07+00:00"
+          "retrieved_at": "2026-09-27T20:05:43+00:00"
         },
         {
           "id": "gdp_3m",
@@ -412,7 +412,7 @@
           "comparison": "vs previous 3 months",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/gdpmonthlyestimateuktimeseriesdataset/current",
-          "retrieved_at": "2026-09-27T20:04:07+00:00"
+          "retrieved_at": "2026-09-27T20:05:43+00:00"
         },
         {
           "id": "unemployment",
@@ -423,7 +423,7 @@
           "comparison": "+0.2pp y/y",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/labourmarketstatistics",
-          "retrieved_at": "2026-09-27T20:04:07+00:00"
+          "retrieved_at": "2026-09-27T20:05:43+00:00"
         },
         {
           "id": "employment",
@@ -434,7 +434,7 @@
           "comparison": "-0.1pp y/y",
           "direction": "\u2193",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/labourmarketstatistics",
-          "retrieved_at": "2026-09-27T20:04:07+00:00"
+          "retrieved_at": "2026-09-27T20:05:43+00:00"
         },
         {
           "id": "inactivity",
@@ -445,7 +445,7 @@
           "comparison": "-0.1pp y/y",
           "direction": "\u2193",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/labourmarketstatistics",
-          "retrieved_at": "2026-09-27T20:04:07+00:00"
+          "retrieved_at": "2026-09-27T20:05:43+00:00"
         },
         {
           "id": "payrolled",
@@ -490,7 +490,7 @@
           "comparison": "Next decision 5 November 2026",
           "direction": "\u2192",
           "source_url": "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate",
-          "retrieved_at": "2026-09-27T20:04:07+00:00"
+          "retrieved_at": "2026-09-27T20:05:43+00:00"
         },
         {
           "id": "broad_money",
@@ -2258,6 +2258,1427 @@
         {
           "period": "2026 AUG",
           "value": 93.8
+        }
+      ]
+    },
+    "debt_interest": {
+      "title": "Debt interest",
+      "unit": "\u00a3m",
+      "source": "ONS",
+      "series_id": "NMFX",
+      "source_url": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/nmfx/pusf",
+      "points": [
+        {
+          "period": "1997 APR",
+          "value": 1703.0
+        },
+        {
+          "period": "1997 MAY",
+          "value": 1888.0
+        },
+        {
+          "period": "1997 JUN",
+          "value": 3722.0
+        },
+        {
+          "period": "1997 JUL",
+          "value": 2237.0
+        },
+        {
+          "period": "1997 AUG",
+          "value": 2370.0
+        },
+        {
+          "period": "1997 SEP",
+          "value": 2634.0
+        },
+        {
+          "period": "1997 OCT",
+          "value": 1458.0
+        },
+        {
+          "period": "1997 NOV",
+          "value": 2153.0
+        },
+        {
+          "period": "1997 DEC",
+          "value": 4183.0
+        },
+        {
+          "period": "1998 JAN",
+          "value": 2550.0
+        },
+        {
+          "period": "1998 FEB",
+          "value": 2589.0
+        },
+        {
+          "period": "1998 MAR",
+          "value": 2334.0
+        },
+        {
+          "period": "1998 APR",
+          "value": 2772.0
+        },
+        {
+          "period": "1998 MAY",
+          "value": 2556.0
+        },
+        {
+          "period": "1998 JUN",
+          "value": 2357.0
+        },
+        {
+          "period": "1998 JUL",
+          "value": 2579.0
+        },
+        {
+          "period": "1998 AUG",
+          "value": 2463.0
+        },
+        {
+          "period": "1998 SEP",
+          "value": 2052.0
+        },
+        {
+          "period": "1998 OCT",
+          "value": 2645.0
+        },
+        {
+          "period": "1998 NOV",
+          "value": 2411.0
+        },
+        {
+          "period": "1998 DEC",
+          "value": 2801.0
+        },
+        {
+          "period": "1999 JAN",
+          "value": 2708.0
+        },
+        {
+          "period": "1999 FEB",
+          "value": 2182.0
+        },
+        {
+          "period": "1999 MAR",
+          "value": 1915.0
+        },
+        {
+          "period": "1999 APR",
+          "value": 2467.0
+        },
+        {
+          "period": "1999 MAY",
+          "value": 2396.0
+        },
+        {
+          "period": "1999 JUN",
+          "value": 2033.0
+        },
+        {
+          "period": "1999 JUL",
+          "value": 2286.0
+        },
+        {
+          "period": "1999 AUG",
+          "value": 2185.0
+        },
+        {
+          "period": "1999 SEP",
+          "value": 1581.0
+        },
+        {
+          "period": "1999 OCT",
+          "value": 2227.0
+        },
+        {
+          "period": "1999 NOV",
+          "value": 2226.0
+        },
+        {
+          "period": "1999 DEC",
+          "value": 2371.0
+        },
+        {
+          "period": "2000 JAN",
+          "value": 2383.0
+        },
+        {
+          "period": "2000 FEB",
+          "value": 1992.0
+        },
+        {
+          "period": "2000 MAR",
+          "value": 1752.0
+        },
+        {
+          "period": "2000 APR",
+          "value": 2331.0
+        },
+        {
+          "period": "2000 MAY",
+          "value": 2389.0
+        },
+        {
+          "period": "2000 JUN",
+          "value": 2152.0
+        },
+        {
+          "period": "2000 JUL",
+          "value": 2413.0
+        },
+        {
+          "period": "2000 AUG",
+          "value": 2415.0
+        },
+        {
+          "period": "2000 SEP",
+          "value": 1639.0
+        },
+        {
+          "period": "2000 OCT",
+          "value": 2413.0
+        },
+        {
+          "period": "2000 NOV",
+          "value": 2445.0
+        },
+        {
+          "period": "2000 DEC",
+          "value": 2290.0
+        },
+        {
+          "period": "2001 JAN",
+          "value": 2598.0
+        },
+        {
+          "period": "2001 FEB",
+          "value": 2224.0
+        },
+        {
+          "period": "2001 MAR",
+          "value": 1582.0
+        },
+        {
+          "period": "2001 APR",
+          "value": 1983.0
+        },
+        {
+          "period": "2001 MAY",
+          "value": 2401.0
+        },
+        {
+          "period": "2001 JUN",
+          "value": 1670.0
+        },
+        {
+          "period": "2001 JUL",
+          "value": 2328.0
+        },
+        {
+          "period": "2001 AUG",
+          "value": 1976.0
+        },
+        {
+          "period": "2001 SEP",
+          "value": 1226.0
+        },
+        {
+          "period": "2001 OCT",
+          "value": 2192.0
+        },
+        {
+          "period": "2001 NOV",
+          "value": 1905.0
+        },
+        {
+          "period": "2001 DEC",
+          "value": 2021.0
+        },
+        {
+          "period": "2002 JAN",
+          "value": 2450.0
+        },
+        {
+          "period": "2002 FEB",
+          "value": 1882.0
+        },
+        {
+          "period": "2002 MAR",
+          "value": 981.0
+        },
+        {
+          "period": "2002 APR",
+          "value": 1993.0
+        },
+        {
+          "period": "2002 MAY",
+          "value": 1989.0
+        },
+        {
+          "period": "2002 JUN",
+          "value": 1826.0
+        },
+        {
+          "period": "2002 JUL",
+          "value": 1432.0
+        },
+        {
+          "period": "2002 AUG",
+          "value": 1557.0
+        },
+        {
+          "period": "2002 SEP",
+          "value": 1630.0
+        },
+        {
+          "period": "2002 OCT",
+          "value": 1683.0
+        },
+        {
+          "period": "2002 NOV",
+          "value": 1999.0
+        },
+        {
+          "period": "2002 DEC",
+          "value": 2483.0
+        },
+        {
+          "period": "2003 JAN",
+          "value": 1915.0
+        },
+        {
+          "period": "2003 FEB",
+          "value": 1629.0
+        },
+        {
+          "period": "2003 MAR",
+          "value": 1611.0
+        },
+        {
+          "period": "2003 APR",
+          "value": 1692.0
+        },
+        {
+          "period": "2003 MAY",
+          "value": 2242.0
+        },
+        {
+          "period": "2003 JUN",
+          "value": 2096.0
+        },
+        {
+          "period": "2003 JUL",
+          "value": 1816.0
+        },
+        {
+          "period": "2003 AUG",
+          "value": 1788.0
+        },
+        {
+          "period": "2003 SEP",
+          "value": 1698.0
+        },
+        {
+          "period": "2003 OCT",
+          "value": 1923.0
+        },
+        {
+          "period": "2003 NOV",
+          "value": 2082.0
+        },
+        {
+          "period": "2003 DEC",
+          "value": 2506.0
+        },
+        {
+          "period": "2004 JAN",
+          "value": 1910.0
+        },
+        {
+          "period": "2004 FEB",
+          "value": 1624.0
+        },
+        {
+          "period": "2004 MAR",
+          "value": 1844.0
+        },
+        {
+          "period": "2004 APR",
+          "value": 1758.0
+        },
+        {
+          "period": "2004 MAY",
+          "value": 2245.0
+        },
+        {
+          "period": "2004 JUN",
+          "value": 2154.0
+        },
+        {
+          "period": "2004 JUL",
+          "value": 1951.0
+        },
+        {
+          "period": "2004 AUG",
+          "value": 2188.0
+        },
+        {
+          "period": "2004 SEP",
+          "value": 1824.0
+        },
+        {
+          "period": "2004 OCT",
+          "value": 2061.0
+        },
+        {
+          "period": "2004 NOV",
+          "value": 2392.0
+        },
+        {
+          "period": "2004 DEC",
+          "value": 2745.0
+        },
+        {
+          "period": "2005 JAN",
+          "value": 2404.0
+        },
+        {
+          "period": "2005 FEB",
+          "value": 2128.0
+        },
+        {
+          "period": "2005 MAR",
+          "value": 2035.0
+        },
+        {
+          "period": "2005 APR",
+          "value": 2121.0
+        },
+        {
+          "period": "2005 MAY",
+          "value": 2350.0
+        },
+        {
+          "period": "2005 JUN",
+          "value": 2557.0
+        },
+        {
+          "period": "2005 JUL",
+          "value": 2312.0
+        },
+        {
+          "period": "2005 AUG",
+          "value": 2465.0
+        },
+        {
+          "period": "2005 SEP",
+          "value": 1635.0
+        },
+        {
+          "period": "2005 OCT",
+          "value": 2207.0
+        },
+        {
+          "period": "2005 NOV",
+          "value": 2636.0
+        },
+        {
+          "period": "2005 DEC",
+          "value": 2871.0
+        },
+        {
+          "period": "2006 JAN",
+          "value": 2354.0
+        },
+        {
+          "period": "2006 FEB",
+          "value": 2156.0
+        },
+        {
+          "period": "2006 MAR",
+          "value": 2133.0
+        },
+        {
+          "period": "2006 APR",
+          "value": 2170.0
+        },
+        {
+          "period": "2006 MAY",
+          "value": 2402.0
+        },
+        {
+          "period": "2006 JUN",
+          "value": 2671.0
+        },
+        {
+          "period": "2006 JUL",
+          "value": 2517.0
+        },
+        {
+          "period": "2006 AUG",
+          "value": 2475.0
+        },
+        {
+          "period": "2006 SEP",
+          "value": 1997.0
+        },
+        {
+          "period": "2006 OCT",
+          "value": 2532.0
+        },
+        {
+          "period": "2006 NOV",
+          "value": 2847.0
+        },
+        {
+          "period": "2006 DEC",
+          "value": 3159.0
+        },
+        {
+          "period": "2007 JAN",
+          "value": 2923.0
+        },
+        {
+          "period": "2007 FEB",
+          "value": 2806.0
+        },
+        {
+          "period": "2007 MAR",
+          "value": 2264.0
+        },
+        {
+          "period": "2007 APR",
+          "value": 2597.0
+        },
+        {
+          "period": "2007 MAY",
+          "value": 2969.0
+        },
+        {
+          "period": "2007 JUN",
+          "value": 2937.0
+        },
+        {
+          "period": "2007 JUL",
+          "value": 2856.0
+        },
+        {
+          "period": "2007 AUG",
+          "value": 3233.0
+        },
+        {
+          "period": "2007 SEP",
+          "value": 1723.0
+        },
+        {
+          "period": "2007 OCT",
+          "value": 3126.0
+        },
+        {
+          "period": "2007 NOV",
+          "value": 3189.0
+        },
+        {
+          "period": "2007 DEC",
+          "value": 3321.0
+        },
+        {
+          "period": "2008 JAN",
+          "value": 2926.0
+        },
+        {
+          "period": "2008 FEB",
+          "value": 3152.0
+        },
+        {
+          "period": "2008 MAR",
+          "value": 1670.0
+        },
+        {
+          "period": "2008 APR",
+          "value": 3089.0
+        },
+        {
+          "period": "2008 MAY",
+          "value": 2871.0
+        },
+        {
+          "period": "2008 JUN",
+          "value": 3437.0
+        },
+        {
+          "period": "2008 JUL",
+          "value": 3072.0
+        },
+        {
+          "period": "2008 AUG",
+          "value": 3378.0
+        },
+        {
+          "period": "2008 SEP",
+          "value": 1789.0
+        },
+        {
+          "period": "2008 OCT",
+          "value": 3306.0
+        },
+        {
+          "period": "2008 NOV",
+          "value": 3010.0
+        },
+        {
+          "period": "2008 DEC",
+          "value": 3290.0
+        },
+        {
+          "period": "2009 JAN",
+          "value": 2465.0
+        },
+        {
+          "period": "2009 FEB",
+          "value": 2352.0
+        },
+        {
+          "period": "2009 MAR",
+          "value": 1476.0
+        },
+        {
+          "period": "2009 APR",
+          "value": 3011.0
+        },
+        {
+          "period": "2009 MAY",
+          "value": 2911.0
+        },
+        {
+          "period": "2009 JUN",
+          "value": 2461.0
+        },
+        {
+          "period": "2009 JUL",
+          "value": 2250.0
+        },
+        {
+          "period": "2009 AUG",
+          "value": 1381.0
+        },
+        {
+          "period": "2009 SEP",
+          "value": 1265.0
+        },
+        {
+          "period": "2009 OCT",
+          "value": 3677.0
+        },
+        {
+          "period": "2009 NOV",
+          "value": 3094.0
+        },
+        {
+          "period": "2009 DEC",
+          "value": 3450.0
+        },
+        {
+          "period": "2010 JAN",
+          "value": 3651.0
+        },
+        {
+          "period": "2010 FEB",
+          "value": 3697.0
+        },
+        {
+          "period": "2010 MAR",
+          "value": 2827.0
+        },
+        {
+          "period": "2010 APR",
+          "value": 4033.0
+        },
+        {
+          "period": "2010 MAY",
+          "value": 4119.0
+        },
+        {
+          "period": "2010 JUN",
+          "value": 4650.0
+        },
+        {
+          "period": "2010 JUL",
+          "value": 3887.0
+        },
+        {
+          "period": "2010 AUG",
+          "value": 3970.0
+        },
+        {
+          "period": "2010 SEP",
+          "value": 2743.0
+        },
+        {
+          "period": "2010 OCT",
+          "value": 4316.0
+        },
+        {
+          "period": "2010 NOV",
+          "value": 4322.0
+        },
+        {
+          "period": "2010 DEC",
+          "value": 4668.0
+        },
+        {
+          "period": "2011 JAN",
+          "value": 4211.0
+        },
+        {
+          "period": "2011 FEB",
+          "value": 4409.0
+        },
+        {
+          "period": "2011 MAR",
+          "value": 3396.0
+        },
+        {
+          "period": "2011 APR",
+          "value": 5159.0
+        },
+        {
+          "period": "2011 MAY",
+          "value": 4442.0
+        },
+        {
+          "period": "2011 JUN",
+          "value": 5137.0
+        },
+        {
+          "period": "2011 JUL",
+          "value": 4471.0
+        },
+        {
+          "period": "2011 AUG",
+          "value": 4070.0
+        },
+        {
+          "period": "2011 SEP",
+          "value": 3221.0
+        },
+        {
+          "period": "2011 OCT",
+          "value": 5293.0
+        },
+        {
+          "period": "2011 NOV",
+          "value": 5192.0
+        },
+        {
+          "period": "2011 DEC",
+          "value": 4586.0
+        },
+        {
+          "period": "2012 JAN",
+          "value": 4281.0
+        },
+        {
+          "period": "2012 FEB",
+          "value": 4206.0
+        },
+        {
+          "period": "2012 MAR",
+          "value": 2159.0
+        },
+        {
+          "period": "2012 APR",
+          "value": 5520.0
+        },
+        {
+          "period": "2012 MAY",
+          "value": 4920.0
+        },
+        {
+          "period": "2012 JUN",
+          "value": 4268.0
+        },
+        {
+          "period": "2012 JUL",
+          "value": 3766.0
+        },
+        {
+          "period": "2012 AUG",
+          "value": 3083.0
+        },
+        {
+          "period": "2012 SEP",
+          "value": 3197.0
+        },
+        {
+          "period": "2012 OCT",
+          "value": 4874.0
+        },
+        {
+          "period": "2012 NOV",
+          "value": 4818.0
+        },
+        {
+          "period": "2012 DEC",
+          "value": 4730.0
+        },
+        {
+          "period": "2013 JAN",
+          "value": 3360.0
+        },
+        {
+          "period": "2013 FEB",
+          "value": 4217.0
+        },
+        {
+          "period": "2013 MAR",
+          "value": 3941.0
+        },
+        {
+          "period": "2013 APR",
+          "value": 5369.0
+        },
+        {
+          "period": "2013 MAY",
+          "value": 4844.0
+        },
+        {
+          "period": "2013 JUN",
+          "value": 4678.0
+        },
+        {
+          "period": "2013 JUL",
+          "value": 3847.0
+        },
+        {
+          "period": "2013 AUG",
+          "value": 3598.0
+        },
+        {
+          "period": "2013 SEP",
+          "value": 3202.0
+        },
+        {
+          "period": "2013 OCT",
+          "value": 5286.0
+        },
+        {
+          "period": "2013 NOV",
+          "value": 4768.0
+        },
+        {
+          "period": "2013 DEC",
+          "value": 3718.0
+        },
+        {
+          "period": "2014 JAN",
+          "value": 3819.0
+        },
+        {
+          "period": "2014 FEB",
+          "value": 4517.0
+        },
+        {
+          "period": "2014 MAR",
+          "value": 2733.0
+        },
+        {
+          "period": "2014 APR",
+          "value": 5484.0
+        },
+        {
+          "period": "2014 MAY",
+          "value": 4334.0
+        },
+        {
+          "period": "2014 JUN",
+          "value": 4428.0
+        },
+        {
+          "period": "2014 JUL",
+          "value": 3818.0
+        },
+        {
+          "period": "2014 AUG",
+          "value": 4352.0
+        },
+        {
+          "period": "2014 SEP",
+          "value": 3117.0
+        },
+        {
+          "period": "2014 OCT",
+          "value": 4985.0
+        },
+        {
+          "period": "2014 NOV",
+          "value": 4303.0
+        },
+        {
+          "period": "2014 DEC",
+          "value": 3828.0
+        },
+        {
+          "period": "2015 JAN",
+          "value": 2902.0
+        },
+        {
+          "period": "2015 FEB",
+          "value": 3963.0
+        },
+        {
+          "period": "2015 MAR",
+          "value": 1028.0
+        },
+        {
+          "period": "2015 APR",
+          "value": 5156.0
+        },
+        {
+          "period": "2015 MAY",
+          "value": 4061.0
+        },
+        {
+          "period": "2015 JUN",
+          "value": 4532.0
+        },
+        {
+          "period": "2015 JUL",
+          "value": 4190.0
+        },
+        {
+          "period": "2015 AUG",
+          "value": 4069.0
+        },
+        {
+          "period": "2015 SEP",
+          "value": 2525.0
+        },
+        {
+          "period": "2015 OCT",
+          "value": 5209.0
+        },
+        {
+          "period": "2015 NOV",
+          "value": 3297.0
+        },
+        {
+          "period": "2015 DEC",
+          "value": 3572.0
+        },
+        {
+          "period": "2016 JAN",
+          "value": 4153.0
+        },
+        {
+          "period": "2016 FEB",
+          "value": 4491.0
+        },
+        {
+          "period": "2016 MAR",
+          "value": 1087.0
+        },
+        {
+          "period": "2016 APR",
+          "value": 5277.0
+        },
+        {
+          "period": "2016 MAY",
+          "value": 4772.0
+        },
+        {
+          "period": "2016 JUN",
+          "value": 3767.0
+        },
+        {
+          "period": "2016 JUL",
+          "value": 4296.0
+        },
+        {
+          "period": "2016 AUG",
+          "value": 4876.0
+        },
+        {
+          "period": "2016 SEP",
+          "value": 3426.0
+        },
+        {
+          "period": "2016 OCT",
+          "value": 4889.0
+        },
+        {
+          "period": "2016 NOV",
+          "value": 4227.0
+        },
+        {
+          "period": "2016 DEC",
+          "value": 3296.0
+        },
+        {
+          "period": "2017 JAN",
+          "value": 4098.0
+        },
+        {
+          "period": "2017 FEB",
+          "value": 5624.0
+        },
+        {
+          "period": "2017 MAR",
+          "value": 1324.0
+        },
+        {
+          "period": "2017 APR",
+          "value": 7254.0
+        },
+        {
+          "period": "2017 MAY",
+          "value": 4629.0
+        },
+        {
+          "period": "2017 JUN",
+          "value": 5031.0
+        },
+        {
+          "period": "2017 JUL",
+          "value": 4957.0
+        },
+        {
+          "period": "2017 AUG",
+          "value": 4488.0
+        },
+        {
+          "period": "2017 SEP",
+          "value": 3746.0
+        },
+        {
+          "period": "2017 OCT",
+          "value": 6144.0
+        },
+        {
+          "period": "2017 NOV",
+          "value": 4016.0
+        },
+        {
+          "period": "2017 DEC",
+          "value": 4511.0
+        },
+        {
+          "period": "2018 JAN",
+          "value": 4307.0
+        },
+        {
+          "period": "2018 FEB",
+          "value": 6469.0
+        },
+        {
+          "period": "2018 MAR",
+          "value": 568.0
+        },
+        {
+          "period": "2018 APR",
+          "value": 6305.0
+        },
+        {
+          "period": "2018 MAY",
+          "value": 3590.0
+        },
+        {
+          "period": "2018 JUN",
+          "value": 5128.0
+        },
+        {
+          "period": "2018 JUL",
+          "value": 4726.0
+        },
+        {
+          "period": "2018 AUG",
+          "value": 4767.0
+        },
+        {
+          "period": "2018 SEP",
+          "value": 3052.0
+        },
+        {
+          "period": "2018 OCT",
+          "value": 7142.0
+        },
+        {
+          "period": "2018 NOV",
+          "value": 3127.0
+        },
+        {
+          "period": "2018 DEC",
+          "value": 4079.0
+        },
+        {
+          "period": "2019 JAN",
+          "value": 3685.0
+        },
+        {
+          "period": "2019 FEB",
+          "value": 4764.0
+        },
+        {
+          "period": "2019 MAR",
+          "value": -125.0
+        },
+        {
+          "period": "2019 APR",
+          "value": 6464.0
+        },
+        {
+          "period": "2019 MAY",
+          "value": 3389.0
+        },
+        {
+          "period": "2019 JUN",
+          "value": 7520.0
+        },
+        {
+          "period": "2019 JUL",
+          "value": 4612.0
+        },
+        {
+          "period": "2019 AUG",
+          "value": 3958.0
+        },
+        {
+          "period": "2019 SEP",
+          "value": 2567.0
+        },
+        {
+          "period": "2019 OCT",
+          "value": 6654.0
+        },
+        {
+          "period": "2019 NOV",
+          "value": 2255.0
+        },
+        {
+          "period": "2019 DEC",
+          "value": 2919.0
+        },
+        {
+          "period": "2020 JAN",
+          "value": 4176.0
+        },
+        {
+          "period": "2020 FEB",
+          "value": 4410.0
+        },
+        {
+          "period": "2020 MAR",
+          "value": 1418.0
+        },
+        {
+          "period": "2020 APR",
+          "value": 5292.0
+        },
+        {
+          "period": "2020 MAY",
+          "value": 3560.0
+        },
+        {
+          "period": "2020 JUN",
+          "value": 2880.0
+        },
+        {
+          "period": "2020 JUL",
+          "value": 2472.0
+        },
+        {
+          "period": "2020 AUG",
+          "value": 3609.0
+        },
+        {
+          "period": "2020 SEP",
+          "value": 5006.0
+        },
+        {
+          "period": "2020 OCT",
+          "value": 1992.0
+        },
+        {
+          "period": "2020 NOV",
+          "value": 4228.0
+        },
+        {
+          "period": "2020 DEC",
+          "value": 2816.0
+        },
+        {
+          "period": "2021 JAN",
+          "value": 1712.0
+        },
+        {
+          "period": "2021 FEB",
+          "value": 5505.0
+        },
+        {
+          "period": "2021 MAR",
+          "value": 1960.0
+        },
+        {
+          "period": "2021 APR",
+          "value": 4882.0
+        },
+        {
+          "period": "2021 MAY",
+          "value": 4495.0
+        },
+        {
+          "period": "2021 JUN",
+          "value": 9070.0
+        },
+        {
+          "period": "2021 JUL",
+          "value": 3699.0
+        },
+        {
+          "period": "2021 AUG",
+          "value": 6616.0
+        },
+        {
+          "period": "2021 SEP",
+          "value": 5043.0
+        },
+        {
+          "period": "2021 OCT",
+          "value": 5959.0
+        },
+        {
+          "period": "2021 NOV",
+          "value": 4820.0
+        },
+        {
+          "period": "2021 DEC",
+          "value": 8490.0
+        },
+        {
+          "period": "2022 JAN",
+          "value": 6407.0
+        },
+        {
+          "period": "2022 FEB",
+          "value": 8277.0
+        },
+        {
+          "period": "2022 MAR",
+          "value": 3230.0
+        },
+        {
+          "period": "2022 APR",
+          "value": 6738.0
+        },
+        {
+          "period": "2022 MAY",
+          "value": 8052.0
+        },
+        {
+          "period": "2022 JUN",
+          "value": 20128.0
+        },
+        {
+          "period": "2022 JUL",
+          "value": 6369.0
+        },
+        {
+          "period": "2022 AUG",
+          "value": 8702.0
+        },
+        {
+          "period": "2022 SEP",
+          "value": 7931.0
+        },
+        {
+          "period": "2022 OCT",
+          "value": 6502.0
+        },
+        {
+          "period": "2022 NOV",
+          "value": 7765.0
+        },
+        {
+          "period": "2022 DEC",
+          "value": 17586.0
+        },
+        {
+          "period": "2023 JAN",
+          "value": 6886.0
+        },
+        {
+          "period": "2023 FEB",
+          "value": 7066.0
+        },
+        {
+          "period": "2023 MAR",
+          "value": 4095.0
+        },
+        {
+          "period": "2023 APR",
+          "value": 9972.0
+        },
+        {
+          "period": "2023 MAY",
+          "value": 8288.0
+        },
+        {
+          "period": "2023 JUN",
+          "value": 13237.0
+        },
+        {
+          "period": "2023 JUL",
+          "value": 8364.0
+        },
+        {
+          "period": "2023 AUG",
+          "value": 6099.0
+        },
+        {
+          "period": "2023 SEP",
+          "value": 1016.0
+        },
+        {
+          "period": "2023 OCT",
+          "value": 8723.0
+        },
+        {
+          "period": "2023 NOV",
+          "value": 7733.0
+        },
+        {
+          "period": "2023 DEC",
+          "value": 4581.0
+        },
+        {
+          "period": "2024 JAN",
+          "value": 4536.0
+        },
+        {
+          "period": "2024 FEB",
+          "value": 7466.0
+        },
+        {
+          "period": "2024 MAR",
+          "value": 2988.0
+        },
+        {
+          "period": "2024 APR",
+          "value": 9447.0
+        },
+        {
+          "period": "2024 MAY",
+          "value": 8300.0
+        },
+        {
+          "period": "2024 JUN",
+          "value": 8004.0
+        },
+        {
+          "period": "2024 JUL",
+          "value": 6977.0
+        },
+        {
+          "period": "2024 AUG",
+          "value": 6542.0
+        },
+        {
+          "period": "2024 SEP",
+          "value": 5818.0
+        },
+        {
+          "period": "2024 OCT",
+          "value": 9278.0
+        },
+        {
+          "period": "2024 NOV",
+          "value": 3547.0
+        },
+        {
+          "period": "2024 DEC",
+          "value": 8875.0
+        },
+        {
+          "period": "2025 JAN",
+          "value": 6524.0
+        },
+        {
+          "period": "2025 FEB",
+          "value": 7448.0
+        },
+        {
+          "period": "2025 MAR",
+          "value": 4501.0
+        },
+        {
+          "period": "2025 APR",
+          "value": 9232.0
+        },
+        {
+          "period": "2025 MAY",
+          "value": 7600.0
+        },
+        {
+          "period": "2025 JUN",
+          "value": 17048.0
+        },
+        {
+          "period": "2025 JUL",
+          "value": 7021.0
+        },
+        {
+          "period": "2025 AUG",
+          "value": 8363.0
+        },
+        {
+          "period": "2025 SEP",
+          "value": 9377.0
+        },
+        {
+          "period": "2025 OCT",
+          "value": 8356.0
+        },
+        {
+          "period": "2025 NOV",
+          "value": 3121.0
+        },
+        {
+          "period": "2025 DEC",
+          "value": 9052.0
+        },
+        {
+          "period": "2026 JAN",
+          "value": 1502.0
+        },
+        {
+          "period": "2026 FEB",
+          "value": 12959.0
+        },
+        {
+          "period": "2026 MAR",
+          "value": 3208.0
+        },
+        {
+          "period": "2026 APR",
+          "value": 9684.0
+        },
+        {
+          "period": "2026 MAY",
+          "value": 11656.0
+        },
+        {
+          "period": "2026 JUN",
+          "value": 11806.0
+        },
+        {
+          "period": "2026 JUL",
+          "value": 8056.0
+        },
+        {
+          "period": "2026 AUG",
+          "value": 8808.0
         }
       ]
     }
