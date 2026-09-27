@@ -23,6 +23,19 @@ def latest_from_series(cdid):
  period=(x.get("date") or x.get("label") or x.get("time") or "latest") if isinstance(x,dict) else "latest"
  return float(str(value).replace(",","")),period
 
+def series_points(cdid):
+ j=ons_series(cdid)
+ rows=j.get("months") or j.get("observations") or j.get("data") or []
+ if isinstance(rows,dict): rows=rows.get("months") or rows.get("observations") or rows.get("items") or []
+ out=[]
+ for x in rows:
+  if not isinstance(x,dict): continue
+  value=x.get("value"); period=x.get("date") or x.get("label") or x.get("time")
+  if value in (None,"") or not period: continue
+  try: out.append({"period":period,"value":float(str(value).replace(",",""))})
+  except ValueError: pass
+ return out
+
 def csv_rows(url):
  req=urllib.request.Request(url,headers={"User-Agent":"State-of-Britain/1.3"})
  with urllib.request.urlopen(req,timeout=25) as r:
@@ -152,6 +165,14 @@ def setv(d,id,display,period,source,url,now,changes):
 def main():
  d=json.loads(DATA.read_text()); now=datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat(); changes=[]; errors=[]
  collectors=[]
+ # Historical layer: use official ONS series, stored with the prepared dashboard data.
+ try:
+  d.setdefault("history_series",{})["debt_gdp"]={
+   "title":"Debt / GDP","unit":"%","source":"ONS","series_id":"HF6X",
+   "source_url":"https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/hf6x/pusf",
+   "points":series_points("HF6X")
+  }
+ except Exception as e: errors.append("history_debt_gdp:"+type(e).__name__+":"+str(e)[:80])
  try:
   cv,cp=latest_from_series("D7G7")
   if not (-10 <= cv <= 30): raise ValueError("CPI series failed sanity check")
