@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "checked_at": "2026-09-27T17:34:29+00:00",
+    "changes": [
+      {
+        "id": "inactivity",
+        "from": "20.9%",
+        "to": "4.9%",
+        "at": "2026-09-27T17:34:29+00:00"
+      },
+      {
+        "id": "real_pay",
+        "from": "+0.6%",
+        "to": "0.6%",
+        "at": "2026-09-27T17:34:29+00:00"
+      }
+    ],
+    "errors": [
+      "gdp:ValueError",
+      "bank_rate:ValueError",
+      "public_finances:ValueError",
+      "cpi:HTTPError",
+      "monthly_borrowing:HTTPError"
+    ]
+  }
+]
