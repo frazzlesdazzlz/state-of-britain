@@ -147,47 +147,25 @@ def main():
   bv,bp,burl=latest_monthly_borrowing_bulletin()
   setv(d,"monthly_borrowing",f"£{bv:.1f}bn",bp,"ONS",burl,now,changes)
  except Exception as e: errors.append("monthly_borrowing:"+type(e).__name__)
- try:
-  mv,mp,tv,tp,gurl=latest_gdp_bulletin()
-  setv(d,"gdp_month",f"{mv:.1f}%",mp,"ONS",gurl,now,changes)
-  setv(d,"gdp_3m",f"{tv:.1f}%",f"3 months to {tp}","ONS",gurl,now,changes)
- except Exception as e: errors.append("gdp:"+type(e).__name__+":"+str(e)[:80])
- try:
-  ev,ep,uv,up,iv,ip,pv,pp,lurl=latest_labour_bulletin()
-  setv(d,"employment",f"{ev:.1f}%",ep,"ONS",lurl,now,changes)
-  setv(d,"unemployment",f"{uv:.1f}%",up,"ONS",lurl,now,changes)
-  setv(d,"inactivity",f"{iv:.1f}%",ip,"ONS",lurl,now,changes)
-  if pv is not None: setv(d,"payrolled",f"{pv:.1f}m",pp+" early estimate","ONS / HMRC PAYE RTI",lurl,now,changes)
- except Exception as e: errors.append("labour:"+type(e).__name__+":"+str(e)[:80])
+
+ # Structured migration pending; keep last-known-good values for this dataset.
+
+ # Structured migration pending; keep last-known-good values for this dataset.
  try:
   wv,wp,rv,rp,purl=latest_pay_bulletin()
   setv(d,"pay",f"£{wv:,}",wp+" before tax","ONS",purl,now,changes)
   setv(d,"real_pay",f"{rv:+.1f}%",rp+" y/y, CPIH-adjusted","ONS",purl,now,changes)
  except Exception as e: errors.append("pay:"+type(e).__name__)
- try:
-  hp,hpy,hpp,rr,rry,rrp,hurl=latest_housing_bulletin()
-  setv(d,"house",f"£{hp/1000:.0f}k",hpp+" · provisional","ONS",hurl,now,changes)
-  hx=item(d,"house")
-  if hx: hx["comparison"]=f"+{hpy:.1f}% y/y"
-  setv(d,"rent",f"£{rr:,}/mo",rrp+" · provisional","ONS",hurl,now,changes)
-  rx=item(d,"rent")
-  if rx: rx["comparison"]=f"+{rry:.1f}% y/y"
- except Exception as e: errors.append("housing:"+type(e).__name__+":"+str(e)[:80])
+
+ # Structured migration pending; keep last-known-good values for this dataset.
  try:
   br,bnext,burl=latest_bank_rate()
   setv(d,"bank_rate",f"{br:.2f}%","current Bank Rate","Bank of England",burl,now,changes)
   bx=item(d,"bank_rate")
   if bx: bx["comparison"]="Next decision "+bnext
  except Exception as e: errors.append("bank_rate:"+type(e).__name__)
- try:
-  debt,dgdp,fy,receipts,expenditure,interest,pfurl=latest_public_finances_bulletin()
-  setv(d,"debt",f"£{debt/1000:.3f}tn","latest ONS observation · provisional","ONS",pfurl,now,changes)
-  setv(d,"debt_gdp",f"{dgdp:.1f}%","latest ONS observation","ONS",pfurl,now,changes)
-  setv(d,"fy_borrowing",f"£{fy:.1f}bn","financial year to latest month","ONS",pfurl,now,changes)
-  setv(d,"receipts",f"£{receipts:.1f}bn","financial year to latest month · central government","ONS",pfurl,now,changes)
-  setv(d,"expenditure",f"£{expenditure:.1f}bn","financial year to latest month · central government","ONS",pfurl,now,changes)
-  setv(d,"debt_interest",f"£{interest:.1f}bn","latest month · central government","ONS",pfurl,now,changes)
- except Exception as e: errors.append("public_finances:"+type(e).__name__+":"+str(e)[:80])
+
+ # Structured migration pending; keep last-known-good values for this dataset.
  for id,s,ds,fmt,url in collectors:
   try:
    v,p=latest_month(s,ds); setv(d,id,fmt(v),p,"ONS",url,now,changes)
