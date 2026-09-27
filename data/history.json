@@ -181,5 +181,12 @@
     "errors": [
       "fy_finances:ValueError:receipts FY table sanity check"
     ]
+  },
+  {
+    "checked_at": "2026-09-27T19:57:28+00:00",
+    "changes": [],
+    "errors": [
+      "fy_finances:ValueError:receipts FY table value not found"
+    ]
   }
 ]
