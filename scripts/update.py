@@ -162,6 +162,21 @@ def setv(d,id,display,period,source,url,now,changes):
   z=str(v).replace(",","").strip()
   return z[1:] if z.startswith("+") else z
  if norm(old)!=norm(display):changes.append({"id":id,"from":old,"to":display,"at":now})
+def latest_gbp_usd():
+ # Bank of England daily spot series: Sterling into US dollars.
+ url="https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom=01/Jan/2026&Dateto=31/Dec/2099&SeriesCodes=XUDLGBD&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N"
+ req=urllib.request.Request(url,headers={"User-Agent":"State-of-Britain/1.4"})
+ with urllib.request.urlopen(req,timeout=25) as r: raw=r.read().decode("utf-8-sig","ignore")
+ rows=list(csv.reader(io.StringIO(raw))); vals=[]
+ for row in rows:
+  if len(row)<2: continue
+  try: vals.append((row[0],float(row[1])))
+  except ValueError: pass
+ if not vals: raise ValueError("GBP/USD observations missing")
+ period,value=vals[-1]
+ if not (0.5 <= value <= 2.5): raise ValueError("GBP/USD sanity check")
+ return value,period,"https://www.bankofengland.co.uk/statistics/exchange-rates"
+
 def latest_bitcoin_gbp():
  # CoinGecko simple-price endpoint: crypto base asset, GBP quote, with provider timestamp.
  url="https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=gbp&include_24hr_change=true&include_last_updated_at=true"
@@ -175,6 +190,12 @@ def main():
  d=json.loads(DATA.read_text()); now=datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat(); changes=[]; errors=[]
  collectors=[]
  # Market data is isolated from official-stat collectors: failure never overwrites a good quote.
+ try:
+  fx,fp,fu=latest_gbp_usd()
+  markets=d.setdefault("markets",{})
+  markets["gbp_usd"]={"label":"GBP / USD","display":format(fx,".4f"),"observed_at":fp,"source":"Bank of England","source_url":fu}
+ except Exception as e:
+  d["markets_status"]="gbp_usd:"+type(e).__name__
  try:
   bp,bc,bt,bu=latest_bitcoin_gbp()
   markets=d.setdefault("markets",{})
