@@ -35,10 +35,10 @@ def page_text(url):
    last=e
    if attempt==2: raise
    import time; time.sleep(2*(attempt+1))
- raw=re.sub(r"<script\\b[^>]*>.*?</script>"," ",raw,flags=re.I|re.S)
- raw=re.sub(r"<style\\b[^>]*>.*?</style>"," ",raw,flags=re.I|re.S)
+ raw=re.sub(r"<script\b[^>]*>.*?</script>"," ",raw,flags=re.I|re.S)
+ raw=re.sub(r"<style\b[^>]*>.*?</style>"," ",raw,flags=re.I|re.S)
  raw=re.sub(r"<[^>]+>"," ",raw)
- return re.sub(r"\\s+"," ",html_lib.unescape(raw)).strip()
+ return re.sub(r"\s+"," ",html_lib.unescape(raw)).strip()
 
 def latest_cpi_bulletin():
  url="https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/latest"
@@ -131,7 +131,8 @@ def setv(d,id,display,period,source,url,now,changes):
  old=x.get("display")
  x.update(display=display,period=period,source=source,source_url=url,retrieved_at=now)
  def norm(v):
-  return re.sub(r"^[+](?=\\d)","",str(v)).replace(",","").strip()
+  z=str(v).replace(",","").strip()
+  return z[1:] if z.startswith("+") else z
  if norm(old)!=norm(display):changes.append({"id":id,"from":old,"to":display,"at":now})
 def main():
  d=json.loads(DATA.read_text()); now=datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat(); changes=[]; errors=[]
