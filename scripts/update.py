@@ -138,10 +138,10 @@ def main():
  d=json.loads(DATA.read_text()); now=datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat(); changes=[]; errors=[]
  collectors=[]
  try:
-  cv,cp,cprev,curl=latest_cpi_bulletin()
+  cv,cp=latest_from_series("D7G7")
+  if not (-10 <= cv <= 30): raise ValueError("CPI series failed sanity check")
+  curl="https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7g7/mm23"
   setv(d,"cpi",f"{cv:.1f}%",cp,"ONS",curl,now,changes)
-  cx=item(d,"cpi")
-  if cx: cx["comparison"]=f"up from {cprev:.1f}% previous month"
  except Exception as e: errors.append("cpi:"+type(e).__name__+":"+str(e)[:80])
  try:
   bv,bp,burl=latest_monthly_borrowing_bulletin()
