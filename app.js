@@ -1,4 +1,13 @@
 function esc(s){return String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function whatChanged(d){
+ const changes=(d.recent_changes||[]).slice(0,6);
+ if(!changes.length) return '<section id="what-changed"><h2>What Changed?</h2><p class="muted">No newly changed official observations since the last recorded update.</p></section>';
+ return '<section id="what-changed"><h2>What Changed?</h2><div class="changes">'+changes.map(c=>{
+  const x=(()=>{for(const g of d.groups||[])for(const i of g.items||[])if(i.id===c.id)return i;return null})();
+  const label=x?.label||c.id;
+  return '<div class="change"><strong>'+esc(label)+'</strong><span>'+esc(c.from??"—")+' → '+esc(c.to??"—")+'</span><small>'+esc(c.at||"")+'</small></div>'
+ }).join("")+'</div></section>'
+}
 function card(x){let src=x.source_url?'<a href="'+x.source_url+'" target="_blank" rel="noopener">'+esc(x.source)+'</a>':esc(x.source);return '<article class="card"><div class="label">'+esc(x.label)+'</div><div class="value">'+esc(x.display)+'</div><div class="meta">'+esc(x.period)+' · '+src+'</div><div class="compare">'+(x.direction?esc(x.direction)+' ':'')+esc(x.comparison||'')+'</div></article>'}
 fetch("./data.json?"+Date.now()).then(r=>r.json()).then(d=>{document.querySelector("#checked").textContent="Latest available official observations · "+d.last_checked;document.querySelector("#changed").textContent=d.changed_count+" indicators changed at the latest check";let h='<nav class="nav">'+d.navigation.map(n=>'<a href="#'+n.toLowerCase().replace(/[^a-z0-9]+/g,"-")+'">'+esc(n)+'</a>').join("")+'</nav>';
 if(d.summary){h+='<section id="britain-today"><h2 class="section">'+esc(d.summary.title)+'</h2><div class="grid summarygrid">'+d.summary.ids.map(id=>{for(const g of d.groups){for(const x of(g.items||[])){if(x.id===id)return card(x)}}return ''}).join("")+'</div><div class="direction"><b>Direction:</b> '+esc(d.summary.direction)+'</div></section>'}
