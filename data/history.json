@@ -62,5 +62,16 @@
       "labour:ValueError",
       "public_finances:ValueError"
     ]
+  },
+  {
+    "checked_at": "2026-09-27T19:11:51+00:00",
+    "changes": [],
+    "errors": [
+      "cpi:ValueError",
+      "gdp:ValueError",
+      "labour:ValueError",
+      "housing:HTTPError",
+      "public_finances:HTTPError"
+    ]
   }
 ]
