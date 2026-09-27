@@ -35,6 +35,17 @@ def latest_labour_bulletin():
  return (float(emp.group(1)),emp.group(2),float(unemp.group(1)),unemp.group(2),
          float(inac.group(1)),inac.group(2),float(payroll.group(2)),payroll.group(1),url)
 
+def latest_pay_bulletin():
+ url="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/latest"
+ req=urllib.request.Request(url,headers={"User-Agent":"State-of-Britain/1.1"})
+ with urllib.request.urlopen(req,timeout=25) as r:
+  html=r.read().decode("utf-8","ignore")
+ import re
+ weekly=re.search(r"estimated at £[0-9,]+ for total earnings and £([0-9,]+) for regular earnings in ([A-Za-z]+ 20[0-9]{2})",html,re.I)
+ real=re.search(r"real terms.*?annual regular pay growth.*?([0-9.]+)% in ([A-Za-z]+ to [A-Za-z]+ 20[0-9]{2})",html,re.I|re.S)
+ if not weekly or not real: raise ValueError("pay bulletin pattern not found")
+ return int(weekly.group(1).replace(",","")),weekly.group(2),float(real.group(1)),real.group(2),url
+
 def item(d,id):
  for g in d["groups"]:
   for x in g.get("items",[]):
@@ -63,6 +74,11 @@ def main():
   setv(d,"inactivity",f"{iv:.1f}%",ip,"ONS",lurl,now,changes)
   setv(d,"payrolled",f"{pv:.1f}m",pp+" early estimate","ONS / HMRC PAYE RTI",lurl,now,changes)
  except Exception as e: errors.append("labour:"+type(e).__name__)
+ try:
+  wv,wp,rv,rp,purl=latest_pay_bulletin()
+  setv(d,"pay",f"£{wv:,}",wp+" before tax","ONS",purl,now,changes)
+  setv(d,"real_pay",f"{rv:.1f}%",rp+" y/y, CPIH-adjusted","ONS",purl,now,changes)
+ except Exception as e: errors.append("pay:"+type(e).__name__)
  for id,s,ds,fmt,url in collectors:
   try:
    v,p=latest_month(s,ds); setv(d,id,fmt(v),p,"ONS",url,now,changes)
