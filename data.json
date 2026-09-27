@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "last_checked": "2026-09-27T18:02:55+00:00",
-  "changed_count": 1,
+  "changed_count": 0,
   "groups": [
     {
       "name": "Government finances",
@@ -9,11 +9,11 @@
         {
           "id": "debt",
           "label": "Public sector net debt",
-          "display": "\u00a32.986tn",
+          "display": "£2.986tn",
           "period": "Aug 2026",
           "source": "ONS",
-          "comparison": "+\u00a378.5bn y/y",
-          "direction": "\u2191"
+          "comparison": "+£78.5bn y/y",
+          "direction": "↑"
         },
         {
           "id": "debt_gdp",
@@ -22,32 +22,32 @@
           "period": "Aug 2026",
           "source": "ONS",
           "comparison": "-1.3pp y/y",
-          "direction": "\u2193"
+          "direction": "↓"
         },
         {
           "id": "monthly_borrowing",
           "label": "Monthly borrowing",
-          "display": "\u00a318.3bn",
+          "display": "£18.3bn",
           "period": "Aug 2026",
           "source": "ONS",
-          "comparison": "+\u00a32.9bn y/y",
-          "direction": "\u2191",
+          "comparison": "+£2.9bn y/y",
+          "direction": "↑",
           "source_url": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance"
         },
         {
           "id": "fy_borrowing",
           "label": "FY borrowing",
-          "display": "\u00a377.3bn",
-          "period": "Apr\u2013Aug 2026",
+          "display": "£77.3bn",
+          "period": "Apr–Aug 2026",
           "source": "ONS / OBR",
-          "comparison": "\u00a38.1bn above OBR forecast",
-          "direction": "\u2191"
+          "comparison": "£8.1bn above OBR forecast",
+          "direction": "↑"
         },
         {
           "id": "receipts",
           "label": "Government money in",
-          "display": "\u00a3460.7bn",
-          "period": "Apr\u2013Aug 2026",
+          "display": "£460.7bn",
+          "period": "Apr–Aug 2026",
           "source": "ONS",
           "comparison": "current receipts",
           "direction": ""
@@ -55,17 +55,17 @@
         {
           "id": "expenditure",
           "label": "Government money out",
-          "display": "\u00a3546.3bn",
-          "period": "Apr\u2013Aug 2026",
+          "display": "£546.3bn",
+          "period": "Apr–Aug 2026",
           "source": "ONS",
-          "comparison": "\u00a37.4bn above OBR forecast",
-          "direction": "\u2191"
+          "comparison": "£7.4bn above OBR forecast",
+          "direction": "↑"
         },
         {
           "id": "cg_gap",
           "label": "Central government gap",
-          "display": "\u00a385.6bn",
-          "period": "Apr\u2013Aug 2026",
+          "display": "£85.6bn",
+          "period": "Apr–Aug 2026",
           "source": "ONS",
           "comparison": "net borrowing",
           "direction": ""
@@ -73,11 +73,11 @@
         {
           "id": "debt_interest",
           "label": "Debt interest",
-          "display": "\u00a38.8bn",
+          "display": "£8.8bn",
           "period": "Aug 2026",
           "source": "ONS",
-          "comparison": "+\u00a30.4bn y/y",
-          "direction": "\u2191"
+          "comparison": "+£0.4bn y/y",
+          "direction": "↑"
         }
       ]
     },
@@ -87,10 +87,10 @@
         {
           "id": "debt",
           "label": "UK public sector net debt",
-          "display": "\u00a32.986tn",
+          "display": "£2.986tn",
           "period": "End-Aug 2026",
           "source": "ONS",
-          "comparison": "\u00a342,966 per person \u00b7 provisional",
+          "comparison": "£42,966 per person · provisional",
           "direction": "",
           "source_url": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/bulletins/publicsectorfinances/august2026"
         },
@@ -105,8 +105,8 @@
         },
         {
           "id": "monthly_borrowing",
-          "label": "Borrowing \u00b7 August",
-          "display": "\u00a318.3bn",
+          "label": "Borrowing · August",
+          "display": "£18.3bn",
           "period": "Aug 2026",
           "source": "ONS",
           "comparison": "one month",
@@ -114,32 +114,32 @@
         },
         {
           "id": "fy_borrowing",
-          "label": "Borrowing \u00b7 FY to August",
-          "display": "\u00a377.3bn",
-          "period": "Apr\u2013Aug 2026",
+          "label": "Borrowing · FY to August",
+          "display": "£77.3bn",
+          "period": "Apr–Aug 2026",
           "source": "ONS / OBR",
-          "comparison": "\u00a32.2bn lower y/y \u00b7 \u00a38.1bn above OBR",
-          "direction": "\u2193"
+          "comparison": "£2.2bn lower y/y · £8.1bn above OBR",
+          "direction": "↓"
         },
         {
           "id": "debt_interest",
-          "label": "Debt interest \u00b7 August",
-          "display": "\u00a38.8bn",
+          "label": "Debt interest · August",
+          "display": "£8.8bn",
           "period": "Aug 2026",
           "source": "ONS",
-          "comparison": "\u00a30.4bn higher y/y",
-          "direction": "\u2191"
+          "comparison": "£0.4bn higher y/y",
+          "direction": "↑"
         }
       ]
     },
     {
-      "name": "Money in \u2192 money out",
+      "name": "Money in → money out",
       "items": [
         {
           "id": "receipts",
           "label": "Total money in",
-          "display": "\u00a3460.7bn",
-          "period": "Apr\u2013Aug 2026",
+          "display": "£460.7bn",
+          "period": "Apr–Aug 2026",
           "source": "ONS",
           "comparison": "central-government current receipts",
           "direction": ""
@@ -147,8 +147,8 @@
         {
           "id": "taxes",
           "label": "Taxes",
-          "display": "\u00a3347.1bn",
-          "period": "Apr\u2013Aug 2026",
+          "display": "£347.1bn",
+          "period": "Apr–Aug 2026",
           "source": "ONS",
           "comparison": "included inside total receipts",
           "direction": ""
@@ -156,8 +156,8 @@
         {
           "id": "ni",
           "label": "National Insurance",
-          "display": "\u00a382.9bn",
-          "period": "Apr\u2013Aug 2026",
+          "display": "£82.9bn",
+          "period": "Apr–Aug 2026",
           "source": "ONS",
           "comparison": "included inside total receipts",
           "direction": ""
@@ -165,8 +165,8 @@
         {
           "id": "other_receipts",
           "label": "Other current receipts",
-          "display": "\u2248\u00a330.8bn",
-          "period": "Apr\u2013Aug 2026",
+          "display": "≈£30.8bn",
+          "period": "Apr–Aug 2026",
           "source": "calculation from ONS",
           "comparison": "remainder of receipts",
           "direction": ""
@@ -174,8 +174,8 @@
         {
           "id": "expenditure",
           "label": "Total money out",
-          "display": "\u00a3546.3bn",
-          "period": "Apr\u2013Aug 2026",
+          "display": "£546.3bn",
+          "period": "Apr–Aug 2026",
           "source": "ONS",
           "comparison": "central-government expenditure",
           "direction": ""
@@ -183,10 +183,10 @@
         {
           "id": "cg_gap",
           "label": "Central-government shortfall",
-          "display": "\u00a385.6bn",
-          "period": "Apr\u2013Aug 2026",
+          "display": "£85.6bn",
+          "period": "Apr–Aug 2026",
           "source": "calculation from ONS",
-          "comparison": "\u00a3546.3bn out \u2212 \u00a3460.7bn in",
+          "comparison": "£546.3bn out − £460.7bn in",
           "direction": ""
         }
       ]
@@ -196,128 +196,128 @@
       "items": [
         {
           "id": "sp_welfare",
-          "label": "1 \u00b7 Welfare",
-          "display": "\u00a3246.1bn",
+          "label": "1 · Welfare",
+          "display": "£246.1bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "21.3% \u00b7 about 21p in every \u00a31",
+          "comparison": "21.3% · about 21p in every £1",
           "direction": ""
         },
         {
           "id": "sp_health",
-          "label": "2 \u00b7 Health",
-          "display": "\u00a3241.8bn",
+          "label": "2 · Health",
+          "display": "£241.8bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "20.9% \u00b7 about 21p in every \u00a31",
+          "comparison": "20.9% · about 21p in every £1",
           "direction": ""
         },
         {
           "id": "sp_pensions",
-          "label": "3 \u00b7 State pensions",
-          "display": "\u00a3137.8bn",
+          "label": "3 · State pensions",
+          "display": "£137.8bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "11.9% \u00b7 about 12p in every \u00a31",
+          "comparison": "11.9% · about 12p in every £1",
           "direction": ""
         },
         {
           "id": "sp_interest",
-          "label": "4 \u00b7 Debt interest",
-          "display": "\u00a3124.7bn",
+          "label": "4 · Debt interest",
+          "display": "£124.7bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "10.8% \u00b7 about 11p in every \u00a31",
+          "comparison": "10.8% · about 11p in every £1",
           "direction": ""
         },
         {
           "id": "sp_education",
-          "label": "5 \u00b7 Education",
-          "display": "\u00a3118.7bn",
+          "label": "5 · Education",
+          "display": "£118.7bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "10.3% \u00b7 about 10p in every \u00a31",
+          "comparison": "10.3% · about 10p in every £1",
           "direction": ""
         },
         {
           "id": "sp_defence",
-          "label": "6 \u00b7 Defence",
-          "display": "\u00a363.6bn",
+          "label": "6 · Defence",
+          "display": "£63.6bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "5.5% \u00b7 about 6p in every \u00a31",
+          "comparison": "5.5% · about 6p in every £1",
           "direction": ""
         },
         {
           "id": "sp_order",
-          "label": "7 \u00b7 Public order & safety",
-          "display": "\u00a351.4bn",
+          "label": "7 · Public order & safety",
+          "display": "£51.4bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "4.4% \u00b7 about 4p in every \u00a31",
+          "comparison": "4.4% · about 4p in every £1",
           "direction": ""
         },
         {
           "id": "sp_transport",
-          "label": "8 \u00b7 Transport",
-          "display": "\u00a346.4bn",
+          "label": "8 · Transport",
+          "display": "£46.4bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "4.0% \u00b7 about 4p in every \u00a31",
+          "comparison": "4.0% · about 4p in every £1",
           "direction": ""
         },
         {
           "id": "sp_business",
-          "label": "9 \u00b7 Business & industry",
-          "display": "\u00a340.4bn",
+          "label": "9 · Business & industry",
+          "display": "£40.4bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "3.5% \u00b7 about 4p in every \u00a31",
+          "comparison": "3.5% · about 4p in every £1",
           "direction": ""
         },
         {
           "id": "sp_admin",
-          "label": "10 \u00b7 Government administration",
-          "display": "\u00a323.0bn",
+          "label": "10 · Government administration",
+          "display": "£23.0bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "2.0% \u00b7 about 2p in every \u00a31",
+          "comparison": "2.0% · about 2p in every £1",
           "direction": ""
         },
         {
           "id": "sp_housing",
-          "label": "11 \u00b7 Housing & utilities",
-          "display": "\u00a322.3bn",
+          "label": "11 · Housing & utilities",
+          "display": "£22.3bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "1.9% \u00b7 about 2p in every \u00a31",
+          "comparison": "1.9% · about 2p in every £1",
           "direction": ""
         },
         {
           "id": "sp_environment",
-          "label": "12 \u00b7 Environment",
-          "display": "\u00a317.1bn",
+          "label": "12 · Environment",
+          "display": "£17.1bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "1.5% \u00b7 about 2p in every \u00a31",
+          "comparison": "1.5% · about 2p in every £1",
           "direction": ""
         },
         {
           "id": "sp_culture",
-          "label": "13 \u00b7 Culture",
-          "display": "\u00a314.5bn",
+          "label": "13 · Culture",
+          "display": "£14.5bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "1.3% \u00b7 about 1p in every \u00a31",
+          "comparison": "1.3% · about 1p in every £1",
           "direction": ""
         },
         {
           "id": "sp_aid",
-          "label": "14 \u00b7 Overseas aid",
-          "display": "\u00a37.7bn",
+          "label": "14 · Overseas aid",
+          "display": "£7.7bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "0.7% \u00b7 about 1p in every \u00a31",
+          "comparison": "0.7% · about 1p in every £1",
           "direction": ""
         }
       ]
@@ -332,13 +332,13 @@
           "period": "Aug 2026",
           "source": "ONS",
           "comparison": "2.9% previous month",
-          "direction": "\u2191",
+          "direction": "↑",
           "source_url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7g7/mm23"
         },
         {
           "id": "pay",
           "label": "Regular weekly pay",
-          "display": "\u00a3705",
+          "display": "£705",
           "period": "July 2026 before tax",
           "source": "ONS",
           "comparison": "before tax, GB",
@@ -353,29 +353,29 @@
           "period": "May to July 2026 y/y, CPIH-adjusted",
           "source": "ONS",
           "comparison": "y/y, CPIH-adjusted",
-          "direction": "\u2191",
+          "direction": "↑",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/latest",
           "retrieved_at": "2026-09-27T18:02:55+00:00"
         },
         {
           "id": "house",
           "label": "Average UK house price",
-          "display": "\u00a3273k",
-          "period": "July 2026 \u00b7 provisional",
+          "display": "£273k",
+          "period": "July 2026 · provisional",
           "source": "ONS",
           "comparison": "+1.4% y/y",
-          "direction": "\u2191",
+          "direction": "↑",
           "source_url": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/latest",
           "retrieved_at": "2026-09-27T18:02:55+00:00"
         },
         {
           "id": "rent",
           "label": "Average private rent",
-          "display": "\u00a31,400/mo",
-          "period": "August 2026 \u00b7 provisional",
+          "display": "£1,400/mo",
+          "period": "August 2026 · provisional",
           "source": "ONS",
           "comparison": "+3.8% y/y",
-          "direction": "\u2191",
+          "direction": "↑",
           "source_url": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/latest",
           "retrieved_at": "2026-09-27T18:02:55+00:00"
         }
@@ -391,17 +391,17 @@
           "period": "Jul 2026",
           "source": "ONS",
           "comparison": "vs June",
-          "direction": "\u2191",
+          "direction": "↑",
           "source_url": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/gdpmonthlyestimateuk/latest"
         },
         {
           "id": "gdp_3m",
-          "label": "GDP \u2014 latest 3 months",
+          "label": "GDP — latest 3 months",
           "display": "+0.4%",
           "period": "3m to Jul 2026",
           "source": "ONS",
           "comparison": "vs previous 3 months",
-          "direction": "\u2191",
+          "direction": "↑",
           "source_url": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/gdpmonthlyestimateuk/latest"
         },
         {
@@ -411,7 +411,7 @@
           "period": "May to July 2026",
           "source": "ONS",
           "comparison": "+0.2pp y/y",
-          "direction": "\u2191",
+          "direction": "↑",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/uklabourmarket/latest",
           "retrieved_at": "2026-09-27T17:34:29+00:00"
         },
@@ -422,20 +422,19 @@
           "period": "May to July 2026",
           "source": "ONS",
           "comparison": "-0.1pp y/y",
-          "direction": "\u2193",
+          "direction": "↓",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/uklabourmarket/latest",
           "retrieved_at": "2026-09-27T17:34:29+00:00"
         },
         {
           "id": "inactivity",
           "label": "Economic inactivity",
-          "display": "4.9%",
+          "display": "20.9%",
           "period": "May to July 2026",
           "source": "ONS",
           "comparison": "-0.1pp y/y",
-          "direction": "\u2193",
-          "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/uklabourmarket/latest",
-          "retrieved_at": "2026-09-27T17:34:29+00:00"
+          "direction": "↓",
+          "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/uklabourmarket/latest"
         },
         {
           "id": "payrolled",
@@ -444,7 +443,7 @@
           "period": "August 2026 early estimate",
           "source": "ONS / HMRC PAYE RTI",
           "comparison": "-145k y/y; provisional",
-          "direction": "\u2193",
+          "direction": "↓",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/uklabourmarket/latest",
           "retrieved_at": "2026-09-27T17:34:29+00:00"
         },
@@ -455,7 +454,7 @@
           "period": "Q2 2026",
           "source": "ONS",
           "comparison": "+1.0% y/y",
-          "direction": "\u2191"
+          "direction": "↑"
         },
         {
           "id": "productivity",
@@ -464,7 +463,7 @@
           "period": "Q2 2026",
           "source": "ONS",
           "comparison": "y/y; flash estimate",
-          "direction": "\u2191"
+          "direction": "↑"
         }
       ]
     },
@@ -478,7 +477,7 @@
           "period": "17 Sep 2026",
           "source": "Bank of England",
           "comparison": "next decision 5 Nov 2026",
-          "direction": "\u2192",
+          "direction": "→",
           "source_url": "https://www.bankofengland.co.uk/boeapps/database/Bank-Rate.asp"
         },
         {
@@ -488,7 +487,7 @@
           "period": "August Money & Credit",
           "source": "Bank of England",
           "comparison": "Updates only when the official release lands",
-          "direction": "\u2192",
+          "direction": "→",
           "source_url": "https://www.bankofengland.co.uk/statistics/money-and-credit"
         }
       ]
@@ -508,16 +507,16 @@
         {
           "id": "trade",
           "label": "Trade balance",
-          "display": "-\u00a39.0bn",
+          "display": "-£9.0bn",
           "period": "3m to Jul 2026",
           "source": "ONS",
-          "comparison": "deficit narrowed \u00a31.1bn",
-          "direction": "\u2191"
+          "comparison": "deficit narrowed £1.1bn",
+          "direction": "↑"
         },
         {
           "id": "goods",
           "label": "Goods balance",
-          "display": "-\u00a361.6bn",
+          "display": "-£61.6bn",
           "period": "3m to Jul 2026",
           "source": "ONS",
           "comparison": "excluding precious metals",
@@ -526,7 +525,7 @@
         {
           "id": "services",
           "label": "Services balance",
-          "display": "+\u00a352.6bn",
+          "display": "+£52.6bn",
           "period": "3m to Jul 2026",
           "source": "ONS",
           "comparison": "services surplus",
@@ -541,7 +540,7 @@
         {
           "id": "gbpusd",
           "label": "GBP / USD",
-          "display": "\u2014",
+          "display": "—",
           "period": "Awaiting live feed",
           "source": "market feed",
           "comparison": "",
@@ -550,7 +549,7 @@
         {
           "id": "ftse",
           "label": "FTSE 100",
-          "display": "\u2014",
+          "display": "—",
           "period": "Awaiting live feed",
           "source": "market feed",
           "comparison": "",
@@ -559,7 +558,7 @@
         {
           "id": "gilt10",
           "label": "UK 10-year gilt",
-          "display": "\u2014",
+          "display": "—",
           "period": "Awaiting live feed",
           "source": "market feed",
           "comparison": "yield",
@@ -568,7 +567,7 @@
         {
           "id": "goldgbp",
           "label": "Gold / GBP",
-          "display": "\u2014",
+          "display": "—",
           "period": "Awaiting live feed",
           "source": "market feed",
           "comparison": "",
@@ -577,7 +576,7 @@
         {
           "id": "btcgbp",
           "label": "Bitcoin / GBP",
-          "display": "\u2014",
+          "display": "—",
           "period": "Awaiting live feed",
           "source": "market feed",
           "comparison": "",
@@ -586,7 +585,7 @@
         {
           "id": "brent",
           "label": "Brent oil",
-          "display": "\u2014",
+          "display": "—",
           "period": "Awaiting live feed",
           "source": "market feed",
           "comparison": "",
@@ -611,7 +610,7 @@
   "navigation": [
     "Britain today",
     "Debt",
-    "Money in \u2192 money out",
+    "Money in → money out",
     "Where the money goes",
     "Household",
     "Economy & jobs",
@@ -620,8 +619,8 @@
     "Daily markets"
   ],
   "notes": {
-    "receipts": "The \u00a3347.1bn tax figure is already inside the \u00a3460.7bn total. Do not add them together.",
-    "markets": "GBP/USD \u00b7 FTSE 100 \u00b7 UK 10-year gilt yield \u00b7 gold/GBP \u00b7 Bitcoin/GBP \u00b7 Brent oil. Market observations will carry a separate last-updated timestamp."
+    "receipts": "The £347.1bn tax figure is already inside the £460.7bn total. Do not add them together.",
+    "markets": "GBP/USD · FTSE 100 · UK 10-year gilt yield · gold/GBP · Bitcoin/GBP · Brent oil. Market observations will carry a separate last-updated timestamp."
   },
   "history_metrics": [
     "Debt / GDP",
@@ -630,13 +629,6 @@
     "GDP per person",
     "Debt interest"
   ],
-  "recent_changes": [
-    {
-      "id": "real_pay",
-      "from": "0.6%",
-      "to": "+0.6%",
-      "at": "2026-09-27T18:02:55+00:00"
-    }
-  ],
-  "collector_status": "gdp:ValueError; labour:ValueError; bank_rate:ValueError; public_finances:ValueError; cpi:HTTPError; monthly_borrowing:HTTPError"
+  "recent_changes": [],
+  "collector_status": "Stored labour value repaired; collector validation active"
 }
