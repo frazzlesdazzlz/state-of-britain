@@ -212,28 +212,7 @@ def main():
   iurl="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/nmfx/pusf"
   setv(d,"debt_interest",f"£{abs(iv)/1000:.1f}bn",ip,"ONS",iurl,now,changes)
  except Exception as e: errors.append("debt_interest:"+type(e).__name__+":"+str(e)[:80])
- try:
-  purl="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/bulletins/publicsectorfinances/latest/pdf"
-  raw=page_text(purl)
-  rows={
-   "receipts":r"Central government total current receipts</td>\s*<td>([0-9]+(?:\.[0-9]+)?)</td>",
-   "expenditure":r"Central government total expenditure</td>\s*<td>([0-9]+(?:\.[0-9]+)?)</td>",
-   "fy_borrowing":r"Public sector net borrowing</td>\s*<td>([0-9]+(?:\.[0-9]+)?)</td>"
-  }
-  limits={"receipts":(100,1000),"expenditure":(100,1200),"fy_borrowing":(0,500)}
-  found={}
-  for mid,pat in rows.items():
-   m=re.search(pat,raw,re.I)
-   if not m: raise ValueError(mid+" official table row not found")
-   v=float(m.group(1)); lo,hi=limits[mid]
-   if not (lo <= v <= hi): raise ValueError(mid+" official table sanity check")
-   found[mid]=v
-  pm=re.search(r"Financial year to ([A-Za-z]+ 20\d{2})",raw,re.I)
-  period=("FY to "+pm.group(1)) if pm else "Latest financial year to date"
-  setv(d,"fy_borrowing",f"£{found['fy_borrowing']:.1f}bn",period,"ONS",purl,now,changes)
-  setv(d,"receipts",f"£{found['receipts']:.1f}bn",period,"ONS",purl,now,changes)
-  setv(d,"expenditure",f"£{found['expenditure']:.1f}bn",period,"ONS",purl,now,changes)
- except Exception as e: errors.append("fy_finances:"+type(e).__name__+":"+str(e)[:80])
+
 
  # Structured migration pending; keep last-known-good values for this dataset.
 
