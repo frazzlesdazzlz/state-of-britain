@@ -625,5 +625,36 @@
       "status": "Collector being connected — values will appear only when validated.",
       "items": []
     }
-  ]
+  ],
+  "summary": {
+    "title": "Britain today",
+    "direction": "Inflation has risen for a second month; borrowing is lower than last year but above forecast; GDP per head grew in Q2; the labour market is softer; the trade deficit narrowed.",
+    "ids": [
+      "fy_borrowing",
+      "cpi",
+      "gdp_head",
+      "real_pay",
+      "unemployment",
+      "employment",
+      "trade",
+      "energy_dependency"
+    ]
+  },
+  "navigation": [
+    "Britain today",
+    "Debt",
+    "Money in → money out",
+    "Where the money goes",
+    "Household",
+    "Economy & jobs",
+    "Money",
+    "Britain",
+    "UK energy balance",
+    "Daily markets"
+  ],
+  "notes": {
+    "receipts": "The £347.1bn tax figure is already inside the £460.7bn total. Do not add them together.",
+    "energy": "Final energy is lower than primary/inland energy because conversion and transformation use/losses occur before energy reaches homes, vehicles and businesses. Electricity mix is a separate measure.",
+    "markets": "GBP/USD · FTSE 100 · UK 10-year gilt yield · gold/GBP · Bitcoin/GBP · Brent oil. Market observations will carry a separate last-updated timestamp."
+  }
 }
