@@ -57,6 +57,17 @@ def latest_housing_bulletin():
  if not rent or not house: raise ValueError("housing bulletin pattern not found")
  return int(house.group(2).replace(",","")),float(house.group(1)),house.group(3),int(rent.group(2).replace(",","")),float(rent.group(1)),rent.group(3),url
 
+def latest_bank_rate():
+ url="https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate"
+ req=urllib.request.Request(url,headers={"User-Agent":"State-of-Britain/1.1"})
+ with urllib.request.urlopen(req,timeout=25) as r:
+  html=r.read().decode("utf-8","ignore")
+ import re
+ rate=re.search(r"Current Bank Rate\s*([0-9.]+)%",html,re.I)
+ nxt=re.search(r"Next due:\s*([0-9]{1,2} [A-Za-z]+ 20[0-9]{2})",html,re.I)
+ if not rate: raise ValueError("Bank Rate pattern not found")
+ return float(rate.group(1)),nxt.group(1) if nxt else "next MPC decision",url
+
 def item(d,id):
  for g in d["groups"]:
   for x in g.get("items",[]):
@@ -99,6 +110,12 @@ def main():
   rx=item(d,"rent")
   if rx: rx["comparison"]=f"+{rry:.1f}% y/y"
  except Exception as e: errors.append("housing:"+type(e).__name__)
+ try:
+  br,bnext,burl=latest_bank_rate()
+  setv(d,"bank_rate",f"{br:.2f}%","current Bank Rate","Bank of England",burl,now,changes)
+  bx=item(d,"bank_rate")
+  if bx: bx["comparison"]="Next decision "+bnext
+ except Exception as e: errors.append("bank_rate:"+type(e).__name__)
  for id,s,ds,fmt,url in collectors:
   try:
    v,p=latest_month(s,ds); setv(d,id,fmt(v),p,"ONS",url,now,changes)
