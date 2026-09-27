@@ -101,7 +101,8 @@
           "period": "Jul 2026",
           "source": "ONS",
           "comparison": "before tax, GB",
-          "direction": ""
+          "direction": "",
+          "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours"
         },
         {
           "id": "real_pay",
@@ -110,7 +111,8 @@
           "period": "May–Jul 2026",
           "source": "ONS",
           "comparison": "y/y, CPIH-adjusted",
-          "direction": "↑"
+          "direction": "↑",
+          "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/september2026"
         },
         {
           "id": "house",
@@ -119,7 +121,8 @@
           "period": "Jul 2026",
           "source": "ONS",
           "comparison": "+1.4% y/y",
-          "direction": "↑"
+          "direction": "↑",
+          "source_url": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/latest"
         },
         {
           "id": "rent",
@@ -128,7 +131,8 @@
           "period": "Aug 2026",
           "source": "ONS",
           "comparison": "+3.8% y/y",
-          "direction": "↑"
+          "direction": "↑",
+          "source_url": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/latest"
         }
       ]
     },
@@ -162,7 +166,8 @@
           "period": "May–Jul 2026",
           "source": "ONS",
           "comparison": "+0.2pp y/y",
-          "direction": "↑"
+          "direction": "↑",
+          "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/unemployment"
         },
         {
           "id": "employment",
@@ -171,7 +176,8 @@
           "period": "May–Jul 2026",
           "source": "ONS",
           "comparison": "-0.1pp y/y",
-          "direction": "↓"
+          "direction": "↓",
+          "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/uklabourmarket/latest"
         },
         {
           "id": "inactivity",
@@ -180,7 +186,8 @@
           "period": "May–Jul 2026",
           "source": "ONS",
           "comparison": "-0.1pp y/y",
-          "direction": "↓"
+          "direction": "↓",
+          "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/uklabourmarket/latest"
         },
         {
           "id": "payrolled",
@@ -189,7 +196,8 @@
           "period": "Aug 2026",
           "source": "ONS / HMRC",
           "comparison": "-145k y/y; provisional",
-          "direction": "↓"
+          "direction": "↓",
+          "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/uklabourmarket/latest"
         },
         {
           "id": "gdp_head",
