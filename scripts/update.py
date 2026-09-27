@@ -46,6 +46,17 @@ def latest_pay_bulletin():
  if not weekly or not real: raise ValueError("pay bulletin pattern not found")
  return int(weekly.group(1).replace(",","")),weekly.group(2),float(real.group(1)),real.group(2),url
 
+def latest_housing_bulletin():
+ url="https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/latest"
+ req=urllib.request.Request(url,headers={"User-Agent":"State-of-Britain/1.1"})
+ with urllib.request.urlopen(req,timeout=25) as r:
+  html=r.read().decode("utf-8","ignore")
+ import re
+ rent=re.search(r"Average UK monthly private rent increased by ([0-9.]+)%, to £([0-9,]+), in the 12 months to ([A-Za-z]+ 20[0-9]{2})",html,re.I)
+ house=re.search(r"Average UK house prices increased by ([0-9.]+)%, to £([0-9,]+), in the 12 months to ([A-Za-z]+ 20[0-9]{2})",html,re.I)
+ if not rent or not house: raise ValueError("housing bulletin pattern not found")
+ return int(house.group(2).replace(",","")),float(house.group(1)),house.group(3),int(rent.group(2).replace(",","")),float(rent.group(1)),rent.group(3),url
+
 def item(d,id):
  for g in d["groups"]:
   for x in g.get("items",[]):
@@ -79,6 +90,15 @@ def main():
   setv(d,"pay",f"£{wv:,}",wp+" before tax","ONS",purl,now,changes)
   setv(d,"real_pay",f"{rv:.1f}%",rp+" y/y, CPIH-adjusted","ONS",purl,now,changes)
  except Exception as e: errors.append("pay:"+type(e).__name__)
+ try:
+  hp,hpy,hpp,rr,rry,rrp,hurl=latest_housing_bulletin()
+  setv(d,"house",f"£{hp/1000:.0f}k",hpp+" · provisional","ONS",hurl,now,changes)
+  hx=item(d,"house")
+  if hx: hx["comparison"]=f"+{hpy:.1f}% y/y"
+  setv(d,"rent",f"£{rr:,}/mo",rrp+" · provisional","ONS",hurl,now,changes)
+  rx=item(d,"rent")
+  if rx: rx["comparison"]=f"+{rry:.1f}% y/y"
+ except Exception as e: errors.append("housing:"+type(e).__name__)
  for id,s,ds,fmt,url in collectors:
   try:
    v,p=latest_month(s,ds); setv(d,id,fmt(v),p,"ONS",url,now,changes)
