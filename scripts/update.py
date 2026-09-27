@@ -213,21 +213,22 @@ def main():
   setv(d,"debt_interest",f"£{abs(iv)/1000:.1f}bn",ip,"ONS",iurl,now,changes)
  except Exception as e: errors.append("debt_interest:"+type(e).__name__+":"+str(e)[:80])
  try:
-  purl="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/bulletins/publicsectorfinances/latest"
-  txt=page_text(purl)
-  patterns={
-   "fy_borrowing":(r"Borrowing in the financial year \(FY\) to [A-Za-z]+ 20\d{2} was £([0-9]+(?:\.[0-9]+)?) billion",0,500),
-   "receipts":(r"Total current central government receipts\s*\|\s*([0-9]+(?:\.[0-9]+)?)",100,1000),
-   "expenditure":(r"Total central government expenditure\s*\|\s*([0-9]+(?:\.[0-9]+)?)",100,1200)
+  purl="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/bulletins/publicsectorfinances/latest/pdf"
+  raw=page_text(purl)
+  rows={
+   "receipts":r"Central government total current receipts</td>\s*<td>([0-9]+(?:\.[0-9]+)?)</td>",
+   "expenditure":r"Central government total expenditure</td>\s*<td>([0-9]+(?:\.[0-9]+)?)</td>",
+   "fy_borrowing":r"Public sector net borrowing</td>\s*<td>([0-9]+(?:\.[0-9]+)?)</td>"
   }
+  limits={"receipts":(100,1000),"expenditure":(100,1200),"fy_borrowing":(0,500)}
   found={}
-  for mid,(pat,lo,hi) in patterns.items():
-   m=re.search(pat,txt,re.I)
-   if not m: raise ValueError(mid+" FY table value not found")
-   v=float(m.group(1))
-   if not (lo <= v <= hi): raise ValueError(mid+" FY table sanity check")
+  for mid,pat in rows.items():
+   m=re.search(pat,raw,re.I)
+   if not m: raise ValueError(mid+" official table row not found")
+   v=float(m.group(1)); lo,hi=limits[mid]
+   if not (lo <= v <= hi): raise ValueError(mid+" official table sanity check")
    found[mid]=v
-  pm=re.search(r"financial year \(FY\) to ([A-Za-z]+ 20\d{2})",txt,re.I)
+  pm=re.search(r"Financial year to ([A-Za-z]+ 20\d{2})",raw,re.I)
   period=("FY to "+pm.group(1)) if pm else "Latest financial year to date"
   setv(d,"fy_borrowing",f"£{found['fy_borrowing']:.1f}bn",period,"ONS",purl,now,changes)
   setv(d,"receipts",f"£{found['receipts']:.1f}bn",period,"ONS",purl,now,changes)
