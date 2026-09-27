@@ -1,16 +1,40 @@
-import json, urllib.request, datetime, re, html as html_lib
+import json, urllib.request, urllib.parse, datetime, re, html as html_lib
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]; DATA=ROOT/"data.json"; HISTORY=ROOT/"data/history.json"
 def get(url):
  req=urllib.request.Request(url,headers={"User-Agent":"State-of-Britain/1.1"})
  with urllib.request.urlopen(req,timeout=25) as r:return json.load(r)
-def latest_month(series,dataset):
- j=get(f"https://api.ons.gov.uk/timeseries/{series}/dataset/{dataset}/data")
- rows=j.get("months",[]); x=rows[-1]; return float(str(x["value"]).replace(",","")),x.get("date",x.get("label","latest"))
+def ons_series(cdid):
+ search=get("https://api.beta.ons.gov.uk/v1/search?content_type=timeseries&cdids="+cdid)
+ items=search.get("items",[])
+ if not items: raise ValueError("ONS series not found")
+ uri=items[0].get("uri")
+ if not uri: raise ValueError("ONS series URI missing")
+ return get("https://api.beta.ons.gov.uk/v1/data?uri="+urllib.parse.quote(uri,safe="/"))
+
+def latest_from_series(cdid):
+ j=ons_series(cdid)
+ # v1 data responses can expose observations under months or observations.
+ rows=j.get("months") or j.get("observations") or j.get("data") or []
+ if isinstance(rows,dict): rows=rows.get("months") or rows.get("observations") or rows.get("items") or []
+ if not rows: raise ValueError("ONS observations missing")
+ x=rows[-1]
+ value=x.get("value") if isinstance(x,dict) else None
+ period=(x.get("date") or x.get("label") or x.get("time") or "latest") if isinstance(x,dict) else "latest"
+ return float(str(value).replace(",","")),period
+
 def page_text(url):
- req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0 State-of-Britain/1.2"})
- with urllib.request.urlopen(req,timeout=25) as r:
-  raw=r.read().decode("utf-8","ignore")
+ req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0 State-of-Britain/1.2","Accept":"text/html"})
+ last=None
+ for attempt in range(3):
+  try:
+   with urllib.request.urlopen(req,timeout=25) as r:
+    raw=r.read().decode("utf-8","ignore")
+   break
+  except Exception as e:
+   last=e
+   if attempt==2: raise
+   import time; time.sleep(2*(attempt+1))
  raw=re.sub(r"<script\\b[^>]*>.*?</script>"," ",raw,flags=re.I|re.S)
  raw=re.sub(r"<style\\b[^>]*>.*?</style>"," ",raw,flags=re.I|re.S)
  raw=re.sub(r"<[^>]+>"," ",raw)
@@ -37,8 +61,8 @@ def latest_monthly_borrowing_bulletin():
 def latest_gdp_bulletin():
  url="https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/gdpmonthlyestimateuk/latest"
  t=page_text(url)
- month=re.search(r"Monthly (?:real )?GDP (?:is estimated to have )?(?:grown|increased|grew) by ([0-9.]+)% in ([A-Za-z]+ 20[0-9]{2})",t,re.I)
- three=re.search(r"Real gross domestic product \\(GDP\\) (?:is estimated to have )?(?:grown|increased|grew) by ([0-9.]+)% in the three months to ([A-Za-z]+ 20[0-9]{2})",t,re.I)
+ month=re.search(r"Monthly GDP grew by ([0-9.]+)% in ([A-Za-z]+ 20[0-9]{2})",t,re.I)
+ three=re.search(r"Real gross domestic product \\(GDP\\) grew by ([0-9.]+)%.{0,120}?three months to ([A-Za-z]+ 20[0-9]{2})",t,re.I)
  if not month or not three: raise ValueError("GDP bulletin pattern not found")
  mv=float(month.group(1)); tv=float(three.group(1))
  if not (-30 <= mv <= 30 and -30 <= tv <= 30): raise ValueError("GDP failed sanity check")
@@ -117,7 +141,7 @@ def main():
   setv(d,"cpi",f"{cv:.1f}%",cp,"ONS",curl,now,changes)
   cx=item(d,"cpi")
   if cx: cx["comparison"]=f"up from {cprev:.1f}% previous month"
- except Exception as e: errors.append("cpi:"+type(e).__name__)
+ except Exception as e: errors.append("cpi:"+type(e).__name__+":"+str(e)[:80])
  try:
   bv,bp,burl=latest_monthly_borrowing_bulletin()
   setv(d,"monthly_borrowing",f"£{bv:.1f}bn",bp,"ONS",burl,now,changes)
@@ -126,14 +150,14 @@ def main():
   mv,mp,tv,tp,gurl=latest_gdp_bulletin()
   setv(d,"gdp_month",f"{mv:.1f}%",mp,"ONS",gurl,now,changes)
   setv(d,"gdp_3m",f"{tv:.1f}%",f"3 months to {tp}","ONS",gurl,now,changes)
- except Exception as e: errors.append("gdp:"+type(e).__name__)
+ except Exception as e: errors.append("gdp:"+type(e).__name__+":"+str(e)[:80])
  try:
   ev,ep,uv,up,iv,ip,pv,pp,lurl=latest_labour_bulletin()
   setv(d,"employment",f"{ev:.1f}%",ep,"ONS",lurl,now,changes)
   setv(d,"unemployment",f"{uv:.1f}%",up,"ONS",lurl,now,changes)
   setv(d,"inactivity",f"{iv:.1f}%",ip,"ONS",lurl,now,changes)
   if pv is not None: setv(d,"payrolled",f"{pv:.1f}m",pp+" early estimate","ONS / HMRC PAYE RTI",lurl,now,changes)
- except Exception as e: errors.append("labour:"+type(e).__name__)
+ except Exception as e: errors.append("labour:"+type(e).__name__+":"+str(e)[:80])
  try:
   wv,wp,rv,rp,purl=latest_pay_bulletin()
   setv(d,"pay",f"£{wv:,}",wp+" before tax","ONS",purl,now,changes)
@@ -147,7 +171,7 @@ def main():
   setv(d,"rent",f"£{rr:,}/mo",rrp+" · provisional","ONS",hurl,now,changes)
   rx=item(d,"rent")
   if rx: rx["comparison"]=f"+{rry:.1f}% y/y"
- except Exception as e: errors.append("housing:"+type(e).__name__)
+ except Exception as e: errors.append("housing:"+type(e).__name__+":"+str(e)[:80])
  try:
   br,bnext,burl=latest_bank_rate()
   setv(d,"bank_rate",f"{br:.2f}%","current Bank Rate","Bank of England",burl,now,changes)
@@ -162,7 +186,7 @@ def main():
   setv(d,"receipts",f"£{receipts:.1f}bn","financial year to latest month · central government","ONS",pfurl,now,changes)
   setv(d,"expenditure",f"£{expenditure:.1f}bn","financial year to latest month · central government","ONS",pfurl,now,changes)
   setv(d,"debt_interest",f"£{interest:.1f}bn","latest month · central government","ONS",pfurl,now,changes)
- except Exception as e: errors.append("public_finances:"+type(e).__name__)
+ except Exception as e: errors.append("public_finances:"+type(e).__name__+":"+str(e)[:80])
  for id,s,ds,fmt,url in collectors:
   try:
    v,p=latest_month(s,ds); setv(d,id,fmt(v),p,"ONS",url,now,changes)
