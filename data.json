@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "last_checked": "2026-09-27T17:34:29+00:00",
-  "changed_count": 2,
+  "last_checked": "2026-09-27T18:02:55+00:00",
+  "changed_count": 1,
   "groups": [
     {
       "name": "Government finances",
@@ -344,18 +344,18 @@
           "comparison": "before tax, GB",
           "direction": "",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/latest",
-          "retrieved_at": "2026-09-27T17:34:29+00:00"
+          "retrieved_at": "2026-09-27T18:02:55+00:00"
         },
         {
           "id": "real_pay",
           "label": "Real regular pay growth",
-          "display": "0.6%",
+          "display": "+0.6%",
           "period": "May to July 2026 y/y, CPIH-adjusted",
           "source": "ONS",
           "comparison": "y/y, CPIH-adjusted",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/latest",
-          "retrieved_at": "2026-09-27T17:34:29+00:00"
+          "retrieved_at": "2026-09-27T18:02:55+00:00"
         },
         {
           "id": "house",
@@ -366,7 +366,7 @@
           "comparison": "+1.4% y/y",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/latest",
-          "retrieved_at": "2026-09-27T17:34:29+00:00"
+          "retrieved_at": "2026-09-27T18:02:55+00:00"
         },
         {
           "id": "rent",
@@ -377,7 +377,7 @@
           "comparison": "+3.8% y/y",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/latest",
-          "retrieved_at": "2026-09-27T17:34:29+00:00"
+          "retrieved_at": "2026-09-27T18:02:55+00:00"
         }
       ]
     },
@@ -632,17 +632,11 @@
   ],
   "recent_changes": [
     {
-      "id": "inactivity",
-      "from": "20.9%",
-      "to": "4.9%",
-      "at": "2026-09-27T17:34:29+00:00"
-    },
-    {
       "id": "real_pay",
-      "from": "+0.6%",
-      "to": "0.6%",
-      "at": "2026-09-27T17:34:29+00:00"
+      "from": "0.6%",
+      "to": "+0.6%",
+      "at": "2026-09-27T18:02:55+00:00"
     }
   ],
-  "collector_status": "gdp:ValueError; bank_rate:ValueError; public_finances:ValueError; cpi:HTTPError; monthly_borrowing:HTTPError"
+  "collector_status": "gdp:ValueError; labour:ValueError; bank_rate:ValueError; public_finances:ValueError; cpi:HTTPError; monthly_borrowing:HTTPError"
 }

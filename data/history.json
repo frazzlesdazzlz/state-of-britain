@@ -22,5 +22,24 @@
       "cpi:HTTPError",
       "monthly_borrowing:HTTPError"
     ]
+  },
+  {
+    "checked_at": "2026-09-27T18:02:55+00:00",
+    "changes": [
+      {
+        "id": "real_pay",
+        "from": "0.6%",
+        "to": "+0.6%",
+        "at": "2026-09-27T18:02:55+00:00"
+      }
+    ],
+    "errors": [
+      "gdp:ValueError",
+      "labour:ValueError",
+      "bank_rate:ValueError",
+      "public_finances:ValueError",
+      "cpi:HTTPError",
+      "monthly_borrowing:HTTPError"
+    ]
   }
 ]
