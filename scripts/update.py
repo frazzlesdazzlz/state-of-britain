@@ -206,6 +206,12 @@ def main():
   setv(d,"debt",f"£{debt/1000:.3f}tn",dp+" · provisional","ONS",durl,now,changes)
   setv(d,"debt_gdp",f"{dgdp:.1f}%",dgp+" · provisional","ONS","https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/hf6x/pusf",now,changes)
  except Exception as e: errors.append("public_finance_debt:"+type(e).__name__+":"+str(e)[:80])
+ try:
+  iv,ip=latest_from_series("NMFX")
+  if not (-50000 <= iv <= 50000): raise ValueError("debt interest sanity check")
+  iurl="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/nmfx/pusf"
+  setv(d,"debt_interest",f"£{abs(iv)/1000:.1f}bn",ip,"ONS",iurl,now,changes)
+ except Exception as e: errors.append("debt_interest:"+type(e).__name__+":"+str(e)[:80])
 
  # Structured migration pending; keep last-known-good values for this dataset.
 
