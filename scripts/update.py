@@ -162,9 +162,28 @@ def setv(d,id,display,period,source,url,now,changes):
   z=str(v).replace(",","").strip()
   return z[1:] if z.startswith("+") else z
  if norm(old)!=norm(display):changes.append({"id":id,"from":old,"to":display,"at":now})
+def latest_bitcoin_gbp():
+ # CoinGecko simple-price endpoint: crypto base asset, GBP quote, with provider timestamp.
+ url="https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=gbp&include_24hr_change=true&include_last_updated_at=true"
+ j=get(url); x=j.get("bitcoin") or {}
+ price=float(x["gbp"]); change=x.get("gbp_24h_change"); ts=x.get("last_updated_at")
+ if not (1000 <= price <= 1000000): raise ValueError("BTC/GBP sanity check")
+ stamp=datetime.datetime.fromtimestamp(ts,datetime.timezone.utc).replace(microsecond=0).isoformat() if ts else None
+ return price,change,stamp,url
+
 def main():
  d=json.loads(DATA.read_text()); now=datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat(); changes=[]; errors=[]
  collectors=[]
+ # Market data is isolated from official-stat collectors: failure never overwrites a good quote.
+ try:
+  bp,bc,bt,bu=latest_bitcoin_gbp()
+  markets=d.setdefault("markets",{})
+  markets["bitcoin_gbp"]={"label":"Bitcoin / GBP","display":"£"+format(bp,",.0f"),"change_24h":None if bc is None else round(float(bc),2),"observed_at":bt,"source":"CoinGecko","source_url":bu}
+  d["markets_last_checked"]=now
+ except Exception as e:
+  d["markets_last_checked"]=now
+  d["markets_status"]="bitcoin_gbp:"+type(e).__name__
+
  # Historical layer: use official ONS series, stored with the prepared dashboard data.
  try:
   d.setdefault("history_series",{})["debt_gdp"]={
