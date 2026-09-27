@@ -7,6 +7,17 @@ def get(url):
 def latest_month(series,dataset):
  j=get(f"https://api.ons.gov.uk/timeseries/{series}/dataset/{dataset}/data")
  rows=j.get("months",[]); x=rows[-1]; return float(str(x["value"]).replace(",","")),x.get("date",x.get("label","latest"))
+def latest_gdp_bulletin():
+ url="https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/gdpmonthlyestimateuk/latest"
+ req=urllib.request.Request(url,headers={"User-Agent":"State-of-Britain/1.1"})
+ with urllib.request.urlopen(req,timeout=25) as r:
+  html=r.read().decode("utf-8","ignore")
+ import re
+ month=re.search(r"Monthly GDP (?:is estimated to have )?(?:grown|increased) by ([0-9.]+)% in ([A-Za-z]+ 20[0-9]{2})",html,re.I)
+ three=re.search(r"Real gross domestic product \(GDP\) (?:is estimated to have )?(?:grown|increased) by ([0-9.]+)% in the three months to ([A-Za-z]+ 20[0-9]{2})",html,re.I)
+ if not month or not three: raise ValueError("GDP bulletin pattern not found")
+ return float(month.group(1)),month.group(2),float(three.group(1)),three.group(2),url
+
 def item(d,id):
  for g in d["groups"]:
   for x in g.get("items",[]):
@@ -23,6 +34,11 @@ def main():
   ("cpi","D7G7","MM23",lambda v:f"{v:.1f}%","https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7g7/mm23"),
   ("monthly_borrowing","J5II","PUSF",lambda v:f"£{abs(v)/1000:.1f}bn","https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance")
  ]
+ try:
+  mv,mp,tv,tp,gurl=latest_gdp_bulletin()
+  setv(d,"gdp_month",f"{mv:.1f}%",mp,"ONS",gurl,now,changes)
+  setv(d,"gdp_3m",f"{tv:.1f}%",f"3 months to {tp}","ONS",gurl,now,changes)
+ except Exception as e: errors.append("gdp:"+type(e).__name__)
  for id,s,ds,fmt,url in collectors:
   try:
    v,p=latest_month(s,ds); setv(d,id,fmt(v),p,"ONS",url,now,changes)
