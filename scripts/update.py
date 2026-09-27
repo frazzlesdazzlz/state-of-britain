@@ -192,9 +192,20 @@ def main():
   if rx: rx["comparison"]=f"+{rry:.1f}% y/y"
  except Exception as e: errors.append("housing:"+type(e).__name__+":"+str(e)[:80])
  try:
-  bv,bp,burl=latest_monthly_borrowing_bulletin()
-  setv(d,"monthly_borrowing",f"£{bv:.1f}bn",bp,"ONS",burl,now,changes)
- except Exception as e: errors.append("monthly_borrowing:"+type(e).__name__)
+  bv,bp=latest_from_series("J5II")
+  if not (-100000 <= bv <= 100000): raise ValueError("monthly borrowing sanity check")
+  burl="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/j5ii/pusf"
+  setv(d,"monthly_borrowing",f"£{bv/1000:.1f}bn",bp,"ONS",burl,now,changes)
+ except Exception as e: errors.append("monthly_borrowing:"+type(e).__name__+":"+str(e)[:80])
+ try:
+  debt,dp=latest_from_series("HF6W")
+  dgdp,dgp=latest_from_series("HF6X")
+  if not (1000 <= debt <= 10000): raise ValueError("net debt sanity check")
+  if not (20 <= dgdp <= 200): raise ValueError("debt GDP sanity check")
+  durl="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/hf6w/pusf"
+  setv(d,"debt",f"£{debt/1000:.3f}tn",dp+" · provisional","ONS",durl,now,changes)
+  setv(d,"debt_gdp",f"{dgdp:.1f}%",dgp+" · provisional","ONS","https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/hf6x/pusf",now,changes)
+ except Exception as e: errors.append("public_finance_debt:"+type(e).__name__+":"+str(e)[:80])
 
  # Structured migration pending; keep last-known-good values for this dataset.
 
