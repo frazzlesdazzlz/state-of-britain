@@ -21,7 +21,7 @@ def main():
  d=json.loads(DATA.read_text()); now=datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat(); changes=[]; errors=[]
  collectors=[
   ("cpi","D7G7","MM23",lambda v:f"{v:.1f}%","https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7g7/mm23"),
-  ("monthly_borrowing","-J5II","PUSF",lambda v:f"£{v/1000:.1f}bn","https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance")
+  ("monthly_borrowing","J5II","PUSF",lambda v:f"£{abs(v)/1000:.1f}bn","https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance")
  ]
  for id,s,ds,fmt,url in collectors:
   try:
