@@ -213,11 +213,26 @@ def main():
   setv(d,"debt_interest",f"£{abs(iv)/1000:.1f}bn",ip,"ONS",iurl,now,changes)
  except Exception as e: errors.append("debt_interest:"+type(e).__name__+":"+str(e)[:80])
  try:
-  fy,fp=latest_from_series("J5IJ")
-  if not (-500000 <= fy <= 500000): raise ValueError("FY borrowing sanity check")
-  fyurl="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/j5ij/pusf"
-  setv(d,"fy_borrowing",f"£{abs(fy)/1000:.1f}bn",fp+" · financial year to date","ONS",fyurl,now,changes)
- except Exception as e: errors.append("fy_borrowing:"+type(e).__name__+":"+str(e)[:80])
+  purl="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/bulletins/publicsectorfinances/latest"
+  txt=page_text(purl)
+  patterns={
+   "fy_borrowing":(r"Borrowing in the financial year \(FY\) to [A-Za-z]+ 20\d{2} was £([0-9]+(?:\.[0-9]+)?) billion",0,500),
+   "receipts":(r"Total current central government receipts\s+([0-9]+(?:\.[0-9]+)?)",100,1000),
+   "expenditure":(r"Total central government expenditure\s+([0-9]+(?:\.[0-9]+)?)",100,1200)
+  }
+  found={}
+  for mid,(pat,lo,hi) in patterns.items():
+   m=re.search(pat,txt,re.I)
+   if not m: raise ValueError(mid+" FY table value not found")
+   v=float(m.group(1))
+   if not (lo <= v <= hi): raise ValueError(mid+" FY table sanity check")
+   found[mid]=v
+  pm=re.search(r"financial year \(FY\) to ([A-Za-z]+ 20\d{2})",txt,re.I)
+  period=("FY to "+pm.group(1)) if pm else "Latest financial year to date"
+  setv(d,"fy_borrowing",f"£{found['fy_borrowing']:.1f}bn",period,"ONS",purl,now,changes)
+  setv(d,"receipts",f"£{found['receipts']:.1f}bn",period,"ONS",purl,now,changes)
+  setv(d,"expenditure",f"£{found['expenditure']:.1f}bn",period,"ONS",purl,now,changes)
+ except Exception as e: errors.append("fy_finances:"+type(e).__name__+":"+str(e)[:80])
 
  # Structured migration pending; keep last-known-good values for this dataset.
 
