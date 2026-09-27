@@ -16,10 +16,28 @@ def page_text(url):
  raw=re.sub(r"<[^>]+>"," ",raw)
  return re.sub(r"\\s+"," ",html_lib.unescape(raw)).strip()
 
+def latest_cpi_bulletin():
+ url="https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/latest"
+ t=page_text(url)
+ m=re.search(r"Consumer Prices Index \\(CPI\\) rose by ([0-9.]+)% in the 12 months to ([A-Za-z]+ 20[0-9]{2}), up from ([0-9.]+)%",t,re.I)
+ if not m: raise ValueError("CPI bulletin pattern not found")
+ v=float(m.group(1))
+ if not (-10 <= v <= 30): raise ValueError("CPI failed sanity check")
+ return v,m.group(2),float(m.group(3)),url
+
+def latest_monthly_borrowing_bulletin():
+ url="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/bulletins/publicsectorfinances/latest"
+ t=page_text(url)
+ m=re.search(r"Borrowing.{0,120}?was £([0-9.]+) billion in ([A-Za-z]+ 20[0-9]{2})",t,re.I)
+ if not m: raise ValueError("monthly borrowing bulletin pattern not found")
+ v=float(m.group(1))
+ if not (0 <= v <= 100): raise ValueError("monthly borrowing failed sanity check")
+ return v,m.group(2),url
+
 def latest_gdp_bulletin():
  url="https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/gdpmonthlyestimateuk/latest"
  html=page_text(url)
- month=re.search(r"Monthly GDP (?:is estimated to have )?(?:grown|increased) by ([0-9.]+)% in ([A-Za-z]+ 20[0-9]{2})",html,re.I)
+ month=re.search(r"Monthly (?:real )?GDP (?:is estimated to have )?(?:grown|increased|grew) by ([0-9.]+)% in ([A-Za-z]+ 20[0-9]{2})",html,re.I)
  three=re.search(r"(?:Real gross domestic product \\(GDP\\)|GDP) (?:is estimated to have )?(?:grown|increased|grew) by ([0-9.]+)% in the three months to ([A-Za-z]+ 20[0-9]{2})",html,re.I)
  if not month or not three: raise ValueError("GDP bulletin pattern not found")
  return float(month.group(1)),month.group(2),float(three.group(1)),three.group(2),url
@@ -31,10 +49,10 @@ def latest_labour_bulletin():
   m=re.search(pattern,html,re.I|re.S)
   if not m: raise ValueError("labour bulletin pattern not found")
   return m
- emp=grab(r"employment rate.*?estimated at\s*([0-9.]+)%\s*for\s*([A-Za-z]+ to [A-Za-z]+ 20[0-9]{2})")
- unemp=grab(r"unemployment rate.*?estimated at\s*([0-9.]+)%\s*in\s*([A-Za-z]+ to [A-Za-z]+ 20[0-9]{2})")
- inac=grab(r"economic inactivity rate.*?estimated at\s*([0-9.]+)%\s*in\s*([A-Za-z]+ to [A-Za-z]+ 20[0-9]{2})")
- payroll=grab(r"early estimate of payrolled employees for\s*([A-Za-z]+ 20[0-9]{2}).*?to\s*([0-9.]+) million")
+ emp=grab(r"employment rate.{0,220}?(?:at|to)\\s*([0-9.]+)%.{0,120}?([A-Za-z]+ to [A-Za-z]+ 20[0-9]{2})")
+ unemp=grab(r"unemployment rate.{0,220}?(?:at|to)\\s*([0-9.]+)%.{0,120}?([A-Za-z]+ to [A-Za-z]+ 20[0-9]{2})")
+ inac=grab(r"(?:economic inactivity rate|inactivity rate).{0,220}?(?:at|to)\\s*([0-9.]+)%.{0,120}?([A-Za-z]+ to [A-Za-z]+ 20[0-9]{2})")
+ payroll=grab(r"early estimate of payrolled employees for\\s*([A-Za-z]+ 20[0-9]{2}).{0,300}?(?:was|to)\\s*([0-9.]+) million")
  ev=float(emp.group(1)); uv=float(unemp.group(1)); iv=float(inac.group(1))
  if not (60 <= ev <= 90 and 0 <= uv <= 15 and 10 <= iv <= 35): raise ValueError("labour values failed sanity check")
  return (ev,emp.group(2),uv,unemp.group(2),iv,inac.group(2),float(payroll.group(2)),payroll.group(1),url)
@@ -92,10 +110,17 @@ def setv(d,id,display,period,source,url,now,changes):
  if norm(old)!=norm(display):changes.append({"id":id,"from":old,"to":display,"at":now})
 def main():
  d=json.loads(DATA.read_text()); now=datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat(); changes=[]; errors=[]
- collectors=[
-  ("cpi","D7G7","MM23",lambda v:f"{v:.1f}%","https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7g7/mm23"),
-  ("monthly_borrowing","J5II","PUSF",lambda v:f"£{abs(v)/1000:.1f}bn","https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance")
- ]
+ collectors=[]
+ try:
+  cv,cp,cprev,curl=latest_cpi_bulletin()
+  setv(d,"cpi",f"{cv:.1f}%",cp,"ONS",curl,now,changes)
+  cx=item(d,"cpi")
+  if cx: cx["comparison"]=f"up from {cprev:.1f}% previous month"
+ except Exception as e: errors.append("cpi:"+type(e).__name__)
+ try:
+  bv,bp,burl=latest_monthly_borrowing_bulletin()
+  setv(d,"monthly_borrowing",f"£{bv:.1f}bn",bp,"ONS",burl,now,changes)
+ except Exception as e: errors.append("monthly_borrowing:"+type(e).__name__)
  try:
   mv,mp,tv,tp,gurl=latest_gdp_bulletin()
   setv(d,"gdp_month",f"{mv:.1f}%",mp,"ONS",gurl,now,changes)
