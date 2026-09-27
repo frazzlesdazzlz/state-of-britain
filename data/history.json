@@ -188,5 +188,12 @@
     "errors": [
       "fy_finances:ValueError:receipts FY table value not found"
     ]
+  },
+  {
+    "checked_at": "2026-09-27T19:59:26+00:00",
+    "changes": [],
+    "errors": [
+      "fy_finances:HTTPError:HTTP Error 502: Bad Gateway"
+    ]
   }
 ]
