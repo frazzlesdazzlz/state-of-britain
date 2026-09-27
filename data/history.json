@@ -84,5 +84,16 @@
       "housing:HTTPError:HTTP Error 429: Too Many Requests",
       "public_finances:ValueError:public finance pattern not found"
     ]
+  },
+  {
+    "checked_at": "2026-09-27T19:16:31+00:00",
+    "changes": [],
+    "errors": [
+      "cpi:ValueError:CPI bulletin pattern not found",
+      "gdp:ValueError:GDP bulletin pattern not found",
+      "labour:ValueError:labour bulletin pattern not found",
+      "housing:HTTPError:HTTP Error 429: Too Many Requests",
+      "public_finances:ValueError:public finance pattern not found"
+    ]
   }
 ]
