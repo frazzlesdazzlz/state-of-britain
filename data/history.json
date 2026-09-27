@@ -41,5 +41,16 @@
       "cpi:HTTPError",
       "monthly_borrowing:HTTPError"
     ]
+  },
+  {
+    "checked_at": "2026-09-27T19:06:09+00:00",
+    "changes": [],
+    "errors": [
+      "gdp:ValueError",
+      "labour:ValueError",
+      "public_finances:ValueError",
+      "cpi:HTTPError",
+      "monthly_borrowing:HTTPError"
+    ]
   }
 ]
