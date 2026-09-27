@@ -200,7 +200,7 @@
           "display": "£246.1bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "21.3%",
+          "comparison": "21.3% · about 21p in every £1",
           "direction": ""
         },
         {
@@ -209,7 +209,7 @@
           "display": "£241.8bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "20.9%",
+          "comparison": "20.9% · about 21p in every £1",
           "direction": ""
         },
         {
@@ -218,7 +218,7 @@
           "display": "£137.8bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "11.9%",
+          "comparison": "11.9% · about 12p in every £1",
           "direction": ""
         },
         {
@@ -236,7 +236,7 @@
           "display": "£118.7bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "10.3%",
+          "comparison": "10.3% · about 10p in every £1",
           "direction": ""
         },
         {
@@ -245,7 +245,7 @@
           "display": "£63.6bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "5.5%",
+          "comparison": "5.5% · about 6p in every £1",
           "direction": ""
         },
         {
@@ -254,7 +254,7 @@
           "display": "£51.4bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "4.4%",
+          "comparison": "4.4% · about 4p in every £1",
           "direction": ""
         },
         {
@@ -263,7 +263,7 @@
           "display": "£46.4bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "4.0%",
+          "comparison": "4.0% · about 4p in every £1",
           "direction": ""
         },
         {
@@ -272,7 +272,7 @@
           "display": "£40.4bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "3.5%",
+          "comparison": "3.5% · about 4p in every £1",
           "direction": ""
         },
         {
@@ -281,7 +281,7 @@
           "display": "£23.0bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "2.0%",
+          "comparison": "2.0% · about 2p in every £1",
           "direction": ""
         },
         {
@@ -290,7 +290,7 @@
           "display": "£22.3bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "1.9%",
+          "comparison": "1.9% · about 2p in every £1",
           "direction": ""
         },
         {
@@ -299,7 +299,7 @@
           "display": "£17.1bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "1.5%",
+          "comparison": "1.5% · about 2p in every £1",
           "direction": ""
         },
         {
@@ -308,7 +308,7 @@
           "display": "£14.5bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "1.3%",
+          "comparison": "1.3% · about 1p in every £1",
           "direction": ""
         },
         {
@@ -317,7 +317,7 @@
           "display": "£7.7bn",
           "period": "2024/25",
           "source": "HM Treasury",
-          "comparison": "0.7%",
+          "comparison": "0.7% · about 1p in every £1",
           "direction": ""
         }
       ]
@@ -517,110 +517,6 @@
       ]
     },
     {
-      "name": "UK energy balance",
-      "items": [
-        {
-          "id": "energy_requirement",
-          "label": "Total inland energy requirement",
-          "display": "164.5 mtoe",
-          "period": "2025",
-          "source": "DESNZ",
-          "comparison": "whole energy system",
-          "direction": ""
-        },
-        {
-          "id": "energy_production",
-          "label": "UK production",
-          "display": "94.0 mtoe",
-          "period": "2025",
-          "source": "DESNZ",
-          "comparison": "−1.0% vs 2024",
-          "direction": "↓"
-        },
-        {
-          "id": "energy_dependency",
-          "label": "Net import dependency",
-          "display": "43.5%",
-          "period": "2025",
-          "source": "DESNZ",
-          "comparison": "−0.3pp vs 2024",
-          "direction": "↓"
-        },
-        {
-          "id": "energy_imports",
-          "label": "Implied net imports",
-          "display": "≈71.6 mtoe",
-          "period": "2025",
-          "source": "calculation from DESNZ",
-          "comparison": "imports minus exports",
-          "direction": ""
-        },
-        {
-          "id": "energy_domestic",
-          "label": "Domestic supply share",
-          "display": "≈56.5%",
-          "period": "2025",
-          "source": "calculation from DESNZ",
-          "comparison": "complement of net import dependency",
-          "direction": ""
-        },
-        {
-          "id": "final_energy",
-          "label": "Final energy used",
-          "display": "127.7 mtoe",
-          "period": "2025",
-          "source": "DESNZ",
-          "comparison": "−0.3% vs 2024",
-          "direction": "↓"
-        },
-        {
-          "id": "fossil_share",
-          "label": "Fossil-fuel share",
-          "display": "75.2%",
-          "period": "2025",
-          "source": "DESNZ",
-          "comparison": "record-low share; matching 2024",
-          "direction": ""
-        },
-        {
-          "id": "lowcarbon_share",
-          "label": "Low-carbon share",
-          "display": "21.8%",
-          "period": "2025",
-          "source": "DESNZ",
-          "comparison": "broadly unchanged",
-          "direction": ""
-        },
-        {
-          "id": "energy_trend",
-          "label": "Latest production trend",
-          "display": "−5.8%",
-          "period": "Apr–Jun 2026",
-          "source": "DESNZ",
-          "comparison": "vs same quarter 2025",
-          "direction": "↓"
-        },
-        {
-          "id": "transport_energy",
-          "label": "Transport · final energy",
-          "display": "55.0 mtoe",
-          "period": "2025",
-          "source": "DESNZ",
-          "comparison": "",
-          "direction": ""
-        },
-        {
-          "id": "domestic_energy",
-          "label": "Domestic · final energy",
-          "display": "34.0 mtoe",
-          "period": "2025",
-          "source": "DESNZ",
-          "comparison": "",
-          "direction": ""
-        }
-      ]
-    },
-    {
       "name": "Daily markets",
       "status": "Collector being connected — values will appear only when validated.",
       "items": []
@@ -636,8 +532,7 @@
       "real_pay",
       "unemployment",
       "employment",
-      "trade",
-      "energy_dependency"
+      "trade"
     ]
   },
   "navigation": [
@@ -649,12 +544,10 @@
     "Economy & jobs",
     "Money",
     "Britain",
-    "UK energy balance",
     "Daily markets"
   ],
   "notes": {
     "receipts": "The £347.1bn tax figure is already inside the £460.7bn total. Do not add them together.",
-    "energy": "Final energy is lower than primary/inland energy because conversion and transformation use/losses occur before energy reaches homes, vehicles and businesses. Electricity mix is a separate measure.",
     "markets": "GBP/USD · FTSE 100 · UK 10-year gilt yield · gold/GBP · Bitcoin/GBP · Brent oil. Market observations will carry a separate last-updated timestamp."
   }
 }
