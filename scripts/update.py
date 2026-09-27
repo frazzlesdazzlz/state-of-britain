@@ -32,8 +32,7 @@ def latest_labour_bulletin():
  unemp=grab(r"unemployment rate.*?estimated at\s*([0-9.]+)%\s*in\s*([A-Za-z]+ to [A-Za-z]+ 20[0-9]{2})")
  inac=grab(r"economic inactivity rate.*?estimated at\s*([0-9.]+)%\s*in\s*([A-Za-z]+ to [A-Za-z]+ 20[0-9]{2})")
  payroll=grab(r"early estimate of payrolled employees for\s*([A-Za-z]+ 20[0-9]{2}).*?to\s*([0-9.]+) million")
- return (float(emp.group(1)),emp.group(2),float(unemp.group(1)),unemp.group(2),
-         float(inac.group(1)),inac.group(2),float(payroll.group(2)),payroll.group(1),url)
+ return (ev,emp.group(2),uv,unemp.group(2),iv,inac.group(2),float(payroll.group(2)),payroll.group(1),url)
 
 def latest_pay_bulletin():
  url="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/latest"
@@ -117,7 +116,7 @@ def main():
  try:
   wv,wp,rv,rp,purl=latest_pay_bulletin()
   setv(d,"pay",f"£{wv:,}",wp+" before tax","ONS",purl,now,changes)
-  setv(d,"real_pay",f"{rv:.1f}%",rp+" y/y, CPIH-adjusted","ONS",purl,now,changes)
+  setv(d,"real_pay",f"{rv:+.1f}%",rp+" y/y, CPIH-adjusted","ONS",purl,now,changes)
  except Exception as e: errors.append("pay:"+type(e).__name__)
  try:
   hp,hpy,hpp,rr,rry,rrp,hurl=latest_housing_bulletin()
