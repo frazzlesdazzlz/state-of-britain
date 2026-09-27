@@ -15,8 +15,8 @@ def ons_series(cdid):
 def latest_from_series(cdid):
  j=ons_series(cdid)
  # v1 data responses can expose observations under months or observations.
- rows=j.get("months") or j.get("observations") or j.get("data") or []
- if isinstance(rows,dict): rows=rows.get("months") or rows.get("observations") or rows.get("items") or []
+ rows=j.get("months") or j.get("quarters") or j.get("years") or j.get("observations") or j.get("data") or []
+ if isinstance(rows,dict): rows=rows.get("months") or rows.get("quarters") or rows.get("years") or rows.get("observations") or rows.get("items") or []
  if not rows: raise ValueError("ONS observations missing")
  x=rows[-1]
  value=x.get("value") if isinstance(x,dict) else None
@@ -25,8 +25,8 @@ def latest_from_series(cdid):
 
 def series_points(cdid):
  j=ons_series(cdid)
- rows=j.get("months") or j.get("observations") or j.get("data") or []
- if isinstance(rows,dict): rows=rows.get("months") or rows.get("observations") or rows.get("items") or []
+ rows=j.get("months") or j.get("quarters") or j.get("years") or j.get("observations") or j.get("data") or []
+ if isinstance(rows,dict): rows=rows.get("months") or rows.get("quarters") or rows.get("years") or rows.get("observations") or rows.get("items") or []
  out=[]
  for x in rows:
   if not isinstance(x,dict): continue
