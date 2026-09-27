@@ -1,4 +1,4 @@
-import json, urllib.request, urllib.parse, datetime, re, html as html_lib
+import json, urllib.request, urllib.parse, datetime, re, html as html_lib, csv, io
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]; DATA=ROOT/"data.json"; HISTORY=ROOT/"data/history.json"
 def get(url):
@@ -22,6 +22,36 @@ def latest_from_series(cdid):
  value=x.get("value") if isinstance(x,dict) else None
  period=(x.get("date") or x.get("label") or x.get("time") or "latest") if isinstance(x,dict) else "latest"
  return float(str(value).replace(",","")),period
+
+def csv_rows(url):
+ req=urllib.request.Request(url,headers={"User-Agent":"State-of-Britain/1.3"})
+ with urllib.request.urlopen(req,timeout=25) as r:
+  return list(csv.DictReader(io.StringIO(r.read().decode("utf-8-sig","ignore"))))
+
+def latest_gdp_structured():
+ # ONS MGDP current-edition CSV: official monthly GDP time-series dataset.
+ url="https://www.ons.gov.uk/file?uri=/economy/grossdomesticproductgdp/datasets/gdpmonthlyestimateuktimeseriesdataset/current/gdpmonthlyestimateuktimeseriesdataset.csv"
+ rows=csv_rows(url)
+ # Find rows describing whole-economy GDP growth, then take latest monthly and 3m-on-3m observations.
+ def findrow(words):
+  for r in rows:
+   blob=" ".join(str(v) for v in r.values()).lower()
+   if all(w in blob for w in words): return r
+  raise ValueError("GDP structured series not found")
+ def latest_numeric(r):
+  vals=[]
+  for k,v in r.items():
+   try:
+    n=float(str(v).replace(",","").strip())
+    if re.search(r"20[0-9]{2}",str(k)): vals.append((k,n))
+   except: pass
+  if not vals: raise ValueError("GDP structured observations missing")
+  return vals[-1]
+ monthly=findrow(["gross domestic product","month on previous month"])
+ three=findrow(["gross domestic product","3 months on previous 3 months"])
+ mp,mv=latest_numeric(monthly); tp,tv=latest_numeric(three)
+ if not (-30 <= mv <= 30 and -30 <= tv <= 30): raise ValueError("GDP structured sanity check")
+ return mv,mp,tv,tp,url
 
 def page_text(url):
  req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0 State-of-Britain/1.2","Accept":"text/html"})
@@ -143,6 +173,11 @@ def main():
   curl="https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7g7/mm23"
   setv(d,"cpi",f"{cv:.1f}%",cp,"ONS",curl,now,changes)
  except Exception as e: errors.append("cpi:"+type(e).__name__+":"+str(e)[:80])
+ try:
+  mv,mp,tv,tp,gurl=latest_gdp_structured()
+  setv(d,"gdp_month",f"{mv:+.1f}%",mp,"ONS",gurl,now,changes)
+  setv(d,"gdp_3m",f"{tv:+.1f}%",tp,"ONS",gurl,now,changes)
+ except Exception as e: errors.append("gdp:"+type(e).__name__+":"+str(e)[:80])
  try:
   bv,bp,burl=latest_monthly_borrowing_bulletin()
   setv(d,"monthly_borrowing",f"£{bv:.1f}bn",bp,"ONS",burl,now,changes)
