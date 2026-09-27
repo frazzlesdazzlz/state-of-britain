@@ -147,7 +147,10 @@ def main():
   try:
    v,p=latest_month(s,ds); setv(d,id,fmt(v),p,"ONS",url,now,changes)
   except Exception as e: errors.append(id+":"+type(e).__name__)
- d["recent_changes"]=changes\n d["last_checked"]=now; d["changed_count"]=len(changes); d["collector_status"]="ok" if not errors else "; ".join(errors)
+ d["recent_changes"]=changes
+ d["last_checked"]=now
+ d["changed_count"]=len(changes)
+ d["collector_status"]="ok" if not errors else "; ".join(errors)
  DATA.write_text(json.dumps(d,indent=2)+"\n")
  try:h=json.loads(HISTORY.read_text())
  except:h=[]
