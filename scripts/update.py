@@ -184,6 +184,19 @@ def main():
    "source_url":"https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/timeseries/a2f8/emp",
    "points":series_points("A2F8")
   }
+  # National UK real GDP level. Per-head history is intentionally not substituted
+  # with this aggregate series; it remains pending until its exact national series is verified.
+  d.setdefault("history_series",{}).setdefault("gdp_per_person",{
+   "title":"GDP per person","unit":"","scope":"United Kingdom","source":"ONS",
+   "source_url":"https://www.ons.gov.uk/economy/grossdomesticproductgdp",
+   "points":[]
+  })
+  # ONS affordability dataset is England and Wales; keep the narrower geography explicit.
+  d.setdefault("history_series",{}).setdefault("house_prices_pay",{
+   "title":"House prices / pay","unit":"×","scope":"England and Wales","source":"ONS",
+   "source_url":"https://www.ons.gov.uk/peoplepopulationandcommunity/housing/datasets/ratioofhousepricetoresidencebasedearningslowerquartileandmedian",
+   "points":[]
+  })
  except Exception as e: errors.append("history_debt_gdp:"+type(e).__name__+":"+str(e)[:80])
  try:
   cv,cp=latest_from_series("D7G7")
