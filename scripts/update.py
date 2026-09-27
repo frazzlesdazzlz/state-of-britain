@@ -164,6 +164,18 @@ def main():
   setv(d,"gdp_3m",f"{tv:+.1f}%",tp,"ONS",gurl,now,changes)
  except Exception as e: errors.append("gdp:"+type(e).__name__+":"+str(e)[:80])
  try:
+  ev,ep=latest_from_series("LF24")
+  uv,up=latest_from_series("MGSX")
+  iv,ip=latest_from_series("LF2S")
+  if not (50 <= ev <= 90): raise ValueError("employment series failed sanity check")
+  if not (0 <= uv <= 20): raise ValueError("unemployment series failed sanity check")
+  if not (5 <= iv <= 40): raise ValueError("inactivity series failed sanity check")
+  lurl="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/labourmarketstatistics"
+  setv(d,"employment",f"{ev:.1f}%",ep,"ONS",lurl,now,changes)
+  setv(d,"unemployment",f"{uv:.1f}%",up,"ONS",lurl,now,changes)
+  setv(d,"inactivity",f"{iv:.1f}%",ip,"ONS",lurl,now,changes)
+ except Exception as e: errors.append("labour:"+type(e).__name__+":"+str(e)[:80])
+ try:
   bv,bp,burl=latest_monthly_borrowing_bulletin()
   setv(d,"monthly_borrowing",f"£{bv:.1f}bn",bp,"ONS",burl,now,changes)
  except Exception as e: errors.append("monthly_borrowing:"+type(e).__name__)
