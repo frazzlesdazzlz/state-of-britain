@@ -29,28 +29,13 @@ def csv_rows(url):
   return list(csv.DictReader(io.StringIO(r.read().decode("utf-8-sig","ignore"))))
 
 def latest_gdp_structured():
- # ONS MGDP current-edition CSV: official monthly GDP time-series dataset.
- url="https://www.ons.gov.uk/file?uri=/economy/grossdomesticproductgdp/datasets/gdpmonthlyestimateuktimeseriesdataset/current/gdpmonthlyestimateuktimeseriesdataset.csv"
- rows=csv_rows(url)
- # Find rows describing whole-economy GDP growth, then take latest monthly and 3m-on-3m observations.
- def findrow(words):
-  for r in rows:
-   blob=" ".join(str(v) for v in r.values()).lower()
-   if all(w in blob for w in words): return r
-  raise ValueError("GDP structured series not found")
- def latest_numeric(r):
-  vals=[]
-  for k,v in r.items():
-   try:
-    n=float(str(v).replace(",","").strip())
-    if re.search(r"20[0-9]{2}",str(k)): vals.append((k,n))
-   except: pass
-  if not vals: raise ValueError("GDP structured observations missing")
-  return vals[-1]
- monthly=findrow(["gross domestic product","month on previous month"])
- three=findrow(["gross domestic product","3 months on previous 3 months"])
- mp,mv=latest_numeric(monthly); tp,tv=latest_numeric(three)
+ # Official ONS MGDP time series via the structured beta API.
+ # ECYX = Gross Value Added - Monthly (period on period growth), CVM SA.
+ # ED3H = Gross Value Added - Monthly (3 month on 3 month growth), CVM SA.
+ mv,mp=latest_from_series("ECYX")
+ tv,tp=latest_from_series("ED3H")
  if not (-30 <= mv <= 30 and -30 <= tv <= 30): raise ValueError("GDP structured sanity check")
+ url="https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/gdpmonthlyestimateuktimeseriesdataset/current"
  return mv,mp,tv,tp,url
 
 def page_text(url):
