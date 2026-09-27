@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "last_checked": "2026-09-27T19:06:09+00:00",
+  "last_checked": "2026-09-27T19:08:55+00:00",
   "changed_count": 0,
   "groups": [
     {
@@ -28,11 +28,12 @@
           "id": "monthly_borrowing",
           "label": "Monthly borrowing",
           "display": "\u00a318.3bn",
-          "period": "Aug 2026",
+          "period": "August 2026",
           "source": "ONS",
           "comparison": "+\u00a32.9bn y/y",
           "direction": "\u2191",
-          "source_url": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance"
+          "source_url": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/bulletins/publicsectorfinances/latest",
+          "retrieved_at": "2026-09-27T19:08:55+00:00"
         },
         {
           "id": "fy_borrowing",
@@ -344,7 +345,7 @@
           "comparison": "before tax, GB",
           "direction": "",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/latest",
-          "retrieved_at": "2026-09-27T19:06:09+00:00"
+          "retrieved_at": "2026-09-27T19:08:55+00:00"
         },
         {
           "id": "real_pay",
@@ -355,7 +356,7 @@
           "comparison": "y/y, CPIH-adjusted",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/latest",
-          "retrieved_at": "2026-09-27T19:06:09+00:00"
+          "retrieved_at": "2026-09-27T19:08:55+00:00"
         },
         {
           "id": "house",
@@ -366,7 +367,7 @@
           "comparison": "+1.4% y/y",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/latest",
-          "retrieved_at": "2026-09-27T19:06:09+00:00"
+          "retrieved_at": "2026-09-27T19:08:55+00:00"
         },
         {
           "id": "rent",
@@ -377,7 +378,7 @@
           "comparison": "+3.8% y/y",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/latest",
-          "retrieved_at": "2026-09-27T19:06:09+00:00"
+          "retrieved_at": "2026-09-27T19:08:55+00:00"
         }
       ]
     },
@@ -479,7 +480,7 @@
           "comparison": "Next decision 5 November 2026",
           "direction": "\u2192",
           "source_url": "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate",
-          "retrieved_at": "2026-09-27T19:06:09+00:00"
+          "retrieved_at": "2026-09-27T19:08:55+00:00"
         },
         {
           "id": "broad_money",
@@ -631,5 +632,5 @@
     "Debt interest"
   ],
   "recent_changes": [],
-  "collector_status": "gdp:ValueError; labour:ValueError; public_finances:ValueError; cpi:HTTPError; monthly_borrowing:HTTPError"
+  "collector_status": "cpi:ValueError; gdp:TypeError; labour:ValueError; public_finances:ValueError"
 }
