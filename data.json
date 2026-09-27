@@ -31,7 +31,8 @@
           "period": "Aug 2026",
           "source": "ONS",
           "comparison": "+£2.9bn y/y",
-          "direction": "↑"
+          "direction": "↑",
+          "source_url": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance"
         },
         {
           "id": "fy_borrowing",
@@ -90,7 +91,8 @@
           "period": "Aug 2026",
           "source": "ONS",
           "comparison": "2.9% previous month",
-          "direction": "↑"
+          "direction": "↑",
+          "source_url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7g7/mm23"
         },
         {
           "id": "pay",
@@ -140,7 +142,8 @@
           "period": "Jul 2026",
           "source": "ONS",
           "comparison": "vs June",
-          "direction": "↑"
+          "direction": "↑",
+          "source_url": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/gdpmonthlyestimateuk/latest"
         },
         {
           "id": "gdp_3m",
@@ -149,7 +152,8 @@
           "period": "3m to Jul 2026",
           "source": "ONS",
           "comparison": "vs previous 3 months",
-          "direction": "↑"
+          "direction": "↑",
+          "source_url": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/gdpmonthlyestimateuk/latest"
         },
         {
           "id": "unemployment",
@@ -217,7 +221,8 @@
           "period": "17 Sep 2026",
           "source": "Bank of England",
           "comparison": "next decision 5 Nov 2026",
-          "direction": "→"
+          "direction": "→",
+          "source_url": "https://www.bankofengland.co.uk/boeapps/database/Bank-Rate.asp"
         }
       ]
     },
