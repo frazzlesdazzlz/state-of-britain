@@ -217,8 +217,8 @@ def main():
   txt=page_text(purl)
   patterns={
    "fy_borrowing":(r"Borrowing in the financial year \(FY\) to [A-Za-z]+ 20\d{2} was £([0-9]+(?:\.[0-9]+)?) billion",0,500),
-   "receipts":(r"Total current central government receipts[^0-9]{0,500}([0-9]+(?:\.[0-9]+)?)",100,1000),
-   "expenditure":(r"Total central government expenditure[^0-9]{0,500}([0-9]+(?:\.[0-9]+)?)",100,1200)
+   "receipts":(r"Total current central government receipts\s*\|\s*([0-9]+(?:\.[0-9]+)?)",100,1000),
+   "expenditure":(r"Total central government expenditure\s*\|\s*([0-9]+(?:\.[0-9]+)?)",100,1200)
   }
   found={}
   for mid,(pat,lo,hi) in patterns.items():
