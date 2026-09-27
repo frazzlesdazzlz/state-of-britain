@@ -212,6 +212,12 @@ def main():
   iurl="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/nmfx/pusf"
   setv(d,"debt_interest",f"£{abs(iv)/1000:.1f}bn",ip,"ONS",iurl,now,changes)
  except Exception as e: errors.append("debt_interest:"+type(e).__name__+":"+str(e)[:80])
+ try:
+  fy,fp=latest_from_series("J5IJ")
+  if not (-500000 <= fy <= 500000): raise ValueError("FY borrowing sanity check")
+  fyurl="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/j5ij/pusf"
+  setv(d,"fy_borrowing",f"£{abs(fy)/1000:.1f}bn",fp+" · financial year to date","ONS",fyurl,now,changes)
+ except Exception as e: errors.append("fy_borrowing:"+type(e).__name__+":"+str(e)[:80])
 
  # Structured migration pending; keep last-known-good values for this dataset.
 
