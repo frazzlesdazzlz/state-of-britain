@@ -75,7 +75,7 @@ def latest_public_finances_bulletin():
  fy=val(r"Borrowing was £([0-9.]+) billion in the financial year")
  receipts=val(r"Total current central government receipts\s*</?[^>]*>*\s*([0-9.]+)")
  expenditure=val(r"Total central government expenditure\s*</?[^>]*>*\s*([0-9.]+)")
- interest=val(r"Central government debt interest payable was £([0-9.]+) billion")
+ interest=val(r"(?:Central government )?debt interest payable.*?£([0-9.]+) billion")
  return debt,dgdp,fy,receipts,expenditure,interest,url
 
 def item(d,id):
