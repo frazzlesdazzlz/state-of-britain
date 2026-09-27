@@ -82,6 +82,247 @@
       ]
     },
     {
+      "name": "Debt",
+      "items": [
+        {
+          "id": "debt",
+          "label": "UK public sector net debt",
+          "display": "£2.986tn",
+          "period": "End-Aug 2026",
+          "source": "ONS",
+          "comparison": "£42,966 per person · provisional",
+          "direction": "",
+          "source_url": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/bulletins/publicsectorfinances/august2026"
+        },
+        {
+          "id": "debt_gdp",
+          "label": "Debt / GDP",
+          "display": "93.8%",
+          "period": "End-Aug 2026",
+          "source": "ONS",
+          "comparison": "",
+          "direction": ""
+        },
+        {
+          "id": "monthly_borrowing",
+          "label": "Borrowing · August",
+          "display": "£18.3bn",
+          "period": "Aug 2026",
+          "source": "ONS",
+          "comparison": "one month",
+          "direction": ""
+        },
+        {
+          "id": "fy_borrowing",
+          "label": "Borrowing · FY to August",
+          "display": "£77.3bn",
+          "period": "Apr–Aug 2026",
+          "source": "ONS / OBR",
+          "comparison": "£2.2bn lower y/y · £8.1bn above OBR",
+          "direction": "↓"
+        },
+        {
+          "id": "debt_interest",
+          "label": "Debt interest · August",
+          "display": "£8.8bn",
+          "period": "Aug 2026",
+          "source": "ONS",
+          "comparison": "£0.4bn higher y/y",
+          "direction": "↑"
+        }
+      ]
+    },
+    {
+      "name": "Money in → money out",
+      "items": [
+        {
+          "id": "receipts",
+          "label": "Total money in",
+          "display": "£460.7bn",
+          "period": "Apr–Aug 2026",
+          "source": "ONS",
+          "comparison": "central-government current receipts",
+          "direction": ""
+        },
+        {
+          "id": "taxes",
+          "label": "Taxes",
+          "display": "£347.1bn",
+          "period": "Apr–Aug 2026",
+          "source": "ONS",
+          "comparison": "included inside total receipts",
+          "direction": ""
+        },
+        {
+          "id": "ni",
+          "label": "National Insurance",
+          "display": "£82.9bn",
+          "period": "Apr–Aug 2026",
+          "source": "ONS",
+          "comparison": "included inside total receipts",
+          "direction": ""
+        },
+        {
+          "id": "other_receipts",
+          "label": "Other current receipts",
+          "display": "≈£30.8bn",
+          "period": "Apr–Aug 2026",
+          "source": "calculation from ONS",
+          "comparison": "remainder of receipts",
+          "direction": ""
+        },
+        {
+          "id": "expenditure",
+          "label": "Total money out",
+          "display": "£546.3bn",
+          "period": "Apr–Aug 2026",
+          "source": "ONS",
+          "comparison": "central-government expenditure",
+          "direction": ""
+        },
+        {
+          "id": "cg_gap",
+          "label": "Central-government shortfall",
+          "display": "£85.6bn",
+          "period": "Apr–Aug 2026",
+          "source": "calculation from ONS",
+          "comparison": "£546.3bn out − £460.7bn in",
+          "direction": ""
+        }
+      ]
+    },
+    {
+      "name": "Where the money goes",
+      "items": [
+        {
+          "id": "sp_welfare",
+          "label": "1 · Welfare",
+          "display": "£246.1bn",
+          "period": "2024/25",
+          "source": "HM Treasury",
+          "comparison": "21.3%",
+          "direction": ""
+        },
+        {
+          "id": "sp_health",
+          "label": "2 · Health",
+          "display": "£241.8bn",
+          "period": "2024/25",
+          "source": "HM Treasury",
+          "comparison": "20.9%",
+          "direction": ""
+        },
+        {
+          "id": "sp_pensions",
+          "label": "3 · State pensions",
+          "display": "£137.8bn",
+          "period": "2024/25",
+          "source": "HM Treasury",
+          "comparison": "11.9%",
+          "direction": ""
+        },
+        {
+          "id": "sp_interest",
+          "label": "4 · Debt interest",
+          "display": "£124.7bn",
+          "period": "2024/25",
+          "source": "HM Treasury",
+          "comparison": "10.8% · about 11p in every £1",
+          "direction": ""
+        },
+        {
+          "id": "sp_education",
+          "label": "5 · Education",
+          "display": "£118.7bn",
+          "period": "2024/25",
+          "source": "HM Treasury",
+          "comparison": "10.3%",
+          "direction": ""
+        },
+        {
+          "id": "sp_defence",
+          "label": "6 · Defence",
+          "display": "£63.6bn",
+          "period": "2024/25",
+          "source": "HM Treasury",
+          "comparison": "5.5%",
+          "direction": ""
+        },
+        {
+          "id": "sp_order",
+          "label": "7 · Public order & safety",
+          "display": "£51.4bn",
+          "period": "2024/25",
+          "source": "HM Treasury",
+          "comparison": "4.4%",
+          "direction": ""
+        },
+        {
+          "id": "sp_transport",
+          "label": "8 · Transport",
+          "display": "£46.4bn",
+          "period": "2024/25",
+          "source": "HM Treasury",
+          "comparison": "4.0%",
+          "direction": ""
+        },
+        {
+          "id": "sp_business",
+          "label": "9 · Business & industry",
+          "display": "£40.4bn",
+          "period": "2024/25",
+          "source": "HM Treasury",
+          "comparison": "3.5%",
+          "direction": ""
+        },
+        {
+          "id": "sp_admin",
+          "label": "10 · Government administration",
+          "display": "£23.0bn",
+          "period": "2024/25",
+          "source": "HM Treasury",
+          "comparison": "2.0%",
+          "direction": ""
+        },
+        {
+          "id": "sp_housing",
+          "label": "11 · Housing & utilities",
+          "display": "£22.3bn",
+          "period": "2024/25",
+          "source": "HM Treasury",
+          "comparison": "1.9%",
+          "direction": ""
+        },
+        {
+          "id": "sp_environment",
+          "label": "12 · Environment",
+          "display": "£17.1bn",
+          "period": "2024/25",
+          "source": "HM Treasury",
+          "comparison": "1.5%",
+          "direction": ""
+        },
+        {
+          "id": "sp_culture",
+          "label": "13 · Culture",
+          "display": "£14.5bn",
+          "period": "2024/25",
+          "source": "HM Treasury",
+          "comparison": "1.3%",
+          "direction": ""
+        },
+        {
+          "id": "sp_aid",
+          "label": "14 · Overseas aid",
+          "display": "£7.7bn",
+          "period": "2024/25",
+          "source": "HM Treasury",
+          "comparison": "0.7%",
+          "direction": ""
+        }
+      ]
+    },
+    {
       "name": "Household",
       "items": [
         {
@@ -276,16 +517,106 @@
       ]
     },
     {
-      "name": "Energy",
+      "name": "UK energy balance",
       "items": [
         {
+          "id": "energy_requirement",
+          "label": "Total inland energy requirement",
+          "display": "164.5 mtoe",
+          "period": "2025",
+          "source": "DESNZ",
+          "comparison": "whole energy system",
+          "direction": ""
+        },
+        {
+          "id": "energy_production",
+          "label": "UK production",
+          "display": "94.0 mtoe",
+          "period": "2025",
+          "source": "DESNZ",
+          "comparison": "−1.0% vs 2024",
+          "direction": "↓"
+        },
+        {
           "id": "energy_dependency",
-          "label": "Net energy import dependency",
+          "label": "Net import dependency",
           "display": "43.5%",
           "period": "2025",
           "source": "DESNZ",
-          "comparison": "-0.3pp vs 2024",
+          "comparison": "−0.3pp vs 2024",
           "direction": "↓"
+        },
+        {
+          "id": "energy_imports",
+          "label": "Implied net imports",
+          "display": "≈71.6 mtoe",
+          "period": "2025",
+          "source": "calculation from DESNZ",
+          "comparison": "imports minus exports",
+          "direction": ""
+        },
+        {
+          "id": "energy_domestic",
+          "label": "Domestic supply share",
+          "display": "≈56.5%",
+          "period": "2025",
+          "source": "calculation from DESNZ",
+          "comparison": "complement of net import dependency",
+          "direction": ""
+        },
+        {
+          "id": "final_energy",
+          "label": "Final energy used",
+          "display": "127.7 mtoe",
+          "period": "2025",
+          "source": "DESNZ",
+          "comparison": "−0.3% vs 2024",
+          "direction": "↓"
+        },
+        {
+          "id": "fossil_share",
+          "label": "Fossil-fuel share",
+          "display": "75.2%",
+          "period": "2025",
+          "source": "DESNZ",
+          "comparison": "record-low share; matching 2024",
+          "direction": ""
+        },
+        {
+          "id": "lowcarbon_share",
+          "label": "Low-carbon share",
+          "display": "21.8%",
+          "period": "2025",
+          "source": "DESNZ",
+          "comparison": "broadly unchanged",
+          "direction": ""
+        },
+        {
+          "id": "energy_trend",
+          "label": "Latest production trend",
+          "display": "−5.8%",
+          "period": "Apr–Jun 2026",
+          "source": "DESNZ",
+          "comparison": "vs same quarter 2025",
+          "direction": "↓"
+        },
+        {
+          "id": "transport_energy",
+          "label": "Transport · final energy",
+          "display": "55.0 mtoe",
+          "period": "2025",
+          "source": "DESNZ",
+          "comparison": "",
+          "direction": ""
+        },
+        {
+          "id": "domestic_energy",
+          "label": "Domestic · final energy",
+          "display": "34.0 mtoe",
+          "period": "2025",
+          "source": "DESNZ",
+          "comparison": "",
+          "direction": ""
         }
       ]
     },
