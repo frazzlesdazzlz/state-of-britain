@@ -178,6 +178,12 @@ def main():
    "source_url":"https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/nmfx/pusf",
    "points":series_points("NMFX")
   }
+  # Real regular pay, whole economy, Great Britain, CPI-adjusted and seasonally adjusted.
+  d.setdefault("history_series",{})["real_pay"]={
+   "title":"Real regular pay","unit":" index","scope":"Great Britain","source":"ONS","series_id":"A2F8",
+   "source_url":"https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/timeseries/a2f8/emp",
+   "points":series_points("A2F8")
+  }
  except Exception as e: errors.append("history_debt_gdp:"+type(e).__name__+":"+str(e)[:80])
  try:
   cv,cp=latest_from_series("D7G7")
