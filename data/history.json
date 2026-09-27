@@ -167,5 +167,12 @@
     "errors": [
       "fy_borrowing:ValueError:could not convert string to float: ''"
     ]
+  },
+  {
+    "checked_at": "2026-09-27T19:54:02+00:00",
+    "changes": [],
+    "errors": [
+      "fy_finances:ValueError:receipts FY table sanity check"
+    ]
   }
 ]
