@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "last_checked": "2026-09-27T19:41:51+00:00",
+  "last_checked": "2026-09-27T19:43:42+00:00",
   "changed_count": 0,
   "groups": [
     {
@@ -33,7 +33,7 @@
           "comparison": "+\u00a32.9bn y/y",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/bulletins/publicsectorfinances/latest",
-          "retrieved_at": "2026-09-27T19:41:51+00:00"
+          "retrieved_at": "2026-09-27T19:43:42+00:00"
         },
         {
           "id": "fy_borrowing",
@@ -335,7 +335,7 @@
           "comparison": "2.9% previous month",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7g7/mm23",
-          "retrieved_at": "2026-09-27T19:41:51+00:00"
+          "retrieved_at": "2026-09-27T19:43:42+00:00"
         },
         {
           "id": "pay",
@@ -346,7 +346,7 @@
           "comparison": "before tax, GB",
           "direction": "",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/latest",
-          "retrieved_at": "2026-09-27T19:41:51+00:00"
+          "retrieved_at": "2026-09-27T19:43:42+00:00"
         },
         {
           "id": "real_pay",
@@ -357,7 +357,7 @@
           "comparison": "y/y, CPIH-adjusted",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/latest",
-          "retrieved_at": "2026-09-27T19:41:51+00:00"
+          "retrieved_at": "2026-09-27T19:43:42+00:00"
         },
         {
           "id": "house",
@@ -395,7 +395,7 @@
           "comparison": "vs June",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/gdpmonthlyestimateuktimeseriesdataset/current",
-          "retrieved_at": "2026-09-27T19:41:51+00:00"
+          "retrieved_at": "2026-09-27T19:43:42+00:00"
         },
         {
           "id": "gdp_3m",
@@ -406,39 +406,40 @@
           "comparison": "vs previous 3 months",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/gdpmonthlyestimateuktimeseriesdataset/current",
-          "retrieved_at": "2026-09-27T19:41:51+00:00"
+          "retrieved_at": "2026-09-27T19:43:42+00:00"
         },
         {
           "id": "unemployment",
           "label": "Unemployment",
           "display": "4.9%",
-          "period": "May to July 2026",
+          "period": "2026 JUN",
           "source": "ONS",
           "comparison": "+0.2pp y/y",
           "direction": "\u2191",
-          "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/uklabourmarket/latest",
-          "retrieved_at": "2026-09-27T17:34:29+00:00"
+          "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/labourmarketstatistics",
+          "retrieved_at": "2026-09-27T19:43:42+00:00"
         },
         {
           "id": "employment",
           "label": "Employment rate",
           "display": "75.1%",
-          "period": "May to July 2026",
+          "period": "2026 JUN",
           "source": "ONS",
           "comparison": "-0.1pp y/y",
           "direction": "\u2193",
-          "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/uklabourmarket/latest",
-          "retrieved_at": "2026-09-27T17:34:29+00:00"
+          "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/labourmarketstatistics",
+          "retrieved_at": "2026-09-27T19:43:42+00:00"
         },
         {
           "id": "inactivity",
           "label": "Economic inactivity",
           "display": "20.9%",
-          "period": "May to July 2026",
+          "period": "2026 JUN",
           "source": "ONS",
           "comparison": "-0.1pp y/y",
           "direction": "\u2193",
-          "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/uklabourmarket/latest"
+          "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/labourmarketstatistics",
+          "retrieved_at": "2026-09-27T19:43:42+00:00"
         },
         {
           "id": "payrolled",
@@ -483,7 +484,7 @@
           "comparison": "Next decision 5 November 2026",
           "direction": "\u2192",
           "source_url": "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate",
-          "retrieved_at": "2026-09-27T19:41:51+00:00"
+          "retrieved_at": "2026-09-27T19:43:42+00:00"
         },
         {
           "id": "broad_money",
