@@ -472,6 +472,16 @@
           "comparison": "next decision 5 Nov 2026",
           "direction": "→",
           "source_url": "https://www.bankofengland.co.uk/boeapps/database/Bank-Rate.asp"
+        },
+        {
+          "id": "broad_money",
+          "label": "Broad money",
+          "display": "Next release 29 Sep",
+          "period": "August Money & Credit",
+          "source": "Bank of England",
+          "comparison": "Updates only when the official release lands",
+          "direction": "→",
+          "source_url": "https://www.bankofengland.co.uk/statistics/money-and-credit"
         }
       ]
     },
@@ -518,8 +528,63 @@
     },
     {
       "name": "Daily markets",
-      "status": "Collector being connected — values will appear only when validated.",
-      "items": []
+      "status": "Live market feed not yet connected. No hard-coded prices are shown.",
+      "items": [
+        {
+          "id": "gbpusd",
+          "label": "GBP / USD",
+          "display": "—",
+          "period": "Awaiting live feed",
+          "source": "market feed",
+          "comparison": "",
+          "direction": ""
+        },
+        {
+          "id": "ftse",
+          "label": "FTSE 100",
+          "display": "—",
+          "period": "Awaiting live feed",
+          "source": "market feed",
+          "comparison": "",
+          "direction": ""
+        },
+        {
+          "id": "gilt10",
+          "label": "UK 10-year gilt",
+          "display": "—",
+          "period": "Awaiting live feed",
+          "source": "market feed",
+          "comparison": "yield",
+          "direction": ""
+        },
+        {
+          "id": "goldgbp",
+          "label": "Gold / GBP",
+          "display": "—",
+          "period": "Awaiting live feed",
+          "source": "market feed",
+          "comparison": "",
+          "direction": ""
+        },
+        {
+          "id": "btcgbp",
+          "label": "Bitcoin / GBP",
+          "display": "—",
+          "period": "Awaiting live feed",
+          "source": "market feed",
+          "comparison": "",
+          "direction": ""
+        },
+        {
+          "id": "brent",
+          "label": "Brent oil",
+          "display": "—",
+          "period": "Awaiting live feed",
+          "source": "market feed",
+          "comparison": "",
+          "direction": ""
+        }
+      ]
     }
   ],
   "summary": {
@@ -549,5 +614,12 @@
   "notes": {
     "receipts": "The £347.1bn tax figure is already inside the £460.7bn total. Do not add them together.",
     "markets": "GBP/USD · FTSE 100 · UK 10-year gilt yield · gold/GBP · Bitcoin/GBP · Brent oil. Market observations will carry a separate last-updated timestamp."
-  }
+  },
+  "history_metrics": [
+    "Debt / GDP",
+    "Real pay",
+    "House prices / pay",
+    "GDP per person",
+    "Debt interest"
+  ]
 }
