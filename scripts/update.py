@@ -20,7 +20,7 @@ def latest_gdp_bulletin():
  url="https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/gdpmonthlyestimateuk/latest"
  html=page_text(url)
  month=re.search(r"Monthly GDP (?:is estimated to have )?(?:grown|increased) by ([0-9.]+)% in ([A-Za-z]+ 20[0-9]{2})",html,re.I)
- three=re.search(r"Real gross domestic product \(GDP\) (?:is estimated to have )?(?:grown|increased) by ([0-9.]+)% in the three months to ([A-Za-z]+ 20[0-9]{2})",html,re.I)
+ three=re.search(r"(?:Real gross domestic product \\(GDP\\)|GDP) (?:is estimated to have )?(?:grown|increased|grew) by ([0-9.]+)% in the three months to ([A-Za-z]+ 20[0-9]{2})",html,re.I)
  if not month or not three: raise ValueError("GDP bulletin pattern not found")
  return float(month.group(1)),month.group(2),float(three.group(1)),three.group(2),url
 
@@ -73,8 +73,8 @@ def latest_public_finances_bulletin():
  debt=val(r"net debt.*?estimated at £([0-9,.]+) billion")
  dgdp=val(r"Debt.*?equivalent to ([0-9.]+)% of GDP")
  fy=val(r"Borrowing was £([0-9.]+) billion in the financial year")
- receipts=val(r"Total current central government receipts\s*</?[^>]*>*\s*([0-9.]+)")
- expenditure=val(r"Total central government expenditure\s*</?[^>]*>*\s*([0-9.]+)")
+ receipts=val(r"Central government total current receipts\\s+([0-9.]+)")
+ expenditure=val(r"Central government total expenditure\\s+([0-9.]+)")
  interest=val(r"(?:Central government )?debt interest payable.*?£([0-9.]+) billion")
  return debt,dgdp,fy,receipts,expenditure,interest,url
 
@@ -88,7 +88,7 @@ def setv(d,id,display,period,source,url,now,changes):
  old=x.get("display")
  x.update(display=display,period=period,source=source,source_url=url,retrieved_at=now)
  def norm(v):
-  return re.sub(r"(?<=^)[+](?=\\d)","",str(v)).replace(",","").strip()
+  return re.sub(r"^[+](?=\\d)","",str(v)).replace(",","").strip()
  if norm(old)!=norm(display):changes.append({"id":id,"from":old,"to":display,"at":now})
 def main():
  d=json.loads(DATA.read_text()); now=datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat(); changes=[]; errors=[]
