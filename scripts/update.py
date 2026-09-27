@@ -68,6 +68,24 @@ def latest_bank_rate():
  if not rate: raise ValueError("Bank Rate pattern not found")
  return float(rate.group(1)),nxt.group(1) if nxt else "next MPC decision",url
 
+def latest_public_finances_bulletin():
+ url="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/bulletins/publicsectorfinances/latest"
+ req=urllib.request.Request(url,headers={"User-Agent":"State-of-Britain/1.1"})
+ with urllib.request.urlopen(req,timeout=25) as r:
+  html=r.read().decode("utf-8","ignore")
+ import re
+ def val(pattern):
+  m=re.search(pattern,html,re.I|re.S)
+  if not m: raise ValueError("public finance pattern not found")
+  return float(m.group(1).replace(",",""))
+ debt=val(r"net debt.*?estimated at £([0-9,.]+) billion")
+ dgdp=val(r"Debt.*?equivalent to ([0-9.]+)% of GDP")
+ fy=val(r"Borrowing was £([0-9.]+) billion in the financial year")
+ receipts=val(r"Total current central government receipts\s*</?[^>]*>*\s*([0-9.]+)")
+ expenditure=val(r"Total central government expenditure\s*</?[^>]*>*\s*([0-9.]+)")
+ interest=val(r"Central government debt interest payable was £([0-9.]+) billion")
+ return debt,dgdp,fy,receipts,expenditure,interest,url
+
 def item(d,id):
  for g in d["groups"]:
   for x in g.get("items",[]):
@@ -116,6 +134,15 @@ def main():
   bx=item(d,"bank_rate")
   if bx: bx["comparison"]="Next decision "+bnext
  except Exception as e: errors.append("bank_rate:"+type(e).__name__)
+ try:
+  debt,dgdp,fy,receipts,expenditure,interest,pfurl=latest_public_finances_bulletin()
+  setv(d,"debt",f"£{debt/1000:.3f}tn","latest ONS observation · provisional","ONS",pfurl,now,changes)
+  setv(d,"debt_gdp",f"{dgdp:.1f}%","latest ONS observation","ONS",pfurl,now,changes)
+  setv(d,"fy_borrowing",f"£{fy:.1f}bn","financial year to latest month","ONS",pfurl,now,changes)
+  setv(d,"receipts",f"£{receipts:.1f}bn","financial year to latest month · central government","ONS",pfurl,now,changes)
+  setv(d,"expenditure",f"£{expenditure:.1f}bn","financial year to latest month · central government","ONS",pfurl,now,changes)
+  setv(d,"debt_interest",f"£{interest:.1f}bn","latest month · central government","ONS",pfurl,now,changes)
+ except Exception as e: errors.append("public_finances:"+type(e).__name__)
  for id,s,ds,fmt,url in collectors:
   try:
    v,p=latest_month(s,ds); setv(d,id,fmt(v),p,"ONS",url,now,changes)
