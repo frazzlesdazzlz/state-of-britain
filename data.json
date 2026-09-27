@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "last_checked": "2026-09-27T19:45:20+00:00",
-  "changed_count": 0,
+  "last_checked": "2026-09-27T19:47:03+00:00",
+  "changed_count": 1,
   "groups": [
     {
       "name": "Government finances",
@@ -10,30 +10,34 @@
           "id": "debt",
           "label": "Public sector net debt",
           "display": "\u00a32.986tn",
-          "period": "Aug 2026",
+          "period": "2026 AUG \u00b7 provisional",
           "source": "ONS",
           "comparison": "+\u00a378.5bn y/y",
-          "direction": "\u2191"
+          "direction": "\u2191",
+          "source_url": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/hf6w/pusf",
+          "retrieved_at": "2026-09-27T19:47:03+00:00"
         },
         {
           "id": "debt_gdp",
           "label": "Debt / GDP",
           "display": "93.8%",
-          "period": "Aug 2026",
+          "period": "2026 AUG \u00b7 provisional",
           "source": "ONS",
           "comparison": "-1.3pp y/y",
-          "direction": "\u2193"
+          "direction": "\u2193",
+          "source_url": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/hf6x/pusf",
+          "retrieved_at": "2026-09-27T19:47:03+00:00"
         },
         {
           "id": "monthly_borrowing",
           "label": "Monthly borrowing",
-          "display": "\u00a318.3bn",
-          "period": "August 2026",
+          "display": "\u00a3-18.3bn",
+          "period": "2026 AUG",
           "source": "ONS",
           "comparison": "+\u00a32.9bn y/y",
           "direction": "\u2191",
-          "source_url": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/bulletins/publicsectorfinances/latest",
-          "retrieved_at": "2026-09-27T19:45:20+00:00"
+          "source_url": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/j5ii/pusf",
+          "retrieved_at": "2026-09-27T19:47:03+00:00"
         },
         {
           "id": "fy_borrowing",
@@ -335,7 +339,7 @@
           "comparison": "2.9% previous month",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7g7/mm23",
-          "retrieved_at": "2026-09-27T19:45:20+00:00"
+          "retrieved_at": "2026-09-27T19:47:03+00:00"
         },
         {
           "id": "pay",
@@ -346,7 +350,7 @@
           "comparison": "before tax, GB",
           "direction": "",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/latest",
-          "retrieved_at": "2026-09-27T19:45:20+00:00"
+          "retrieved_at": "2026-09-27T19:47:03+00:00"
         },
         {
           "id": "real_pay",
@@ -357,7 +361,7 @@
           "comparison": "y/y, CPIH-adjusted",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/latest",
-          "retrieved_at": "2026-09-27T19:45:20+00:00"
+          "retrieved_at": "2026-09-27T19:47:03+00:00"
         },
         {
           "id": "house",
@@ -368,7 +372,7 @@
           "comparison": "+1.4% y/y",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/latest",
-          "retrieved_at": "2026-09-27T19:45:20+00:00"
+          "retrieved_at": "2026-09-27T19:47:03+00:00"
         },
         {
           "id": "rent",
@@ -379,7 +383,7 @@
           "comparison": "+3.8% y/y",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/latest",
-          "retrieved_at": "2026-09-27T19:45:20+00:00"
+          "retrieved_at": "2026-09-27T19:47:03+00:00"
         }
       ]
     },
@@ -395,7 +399,7 @@
           "comparison": "vs June",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/gdpmonthlyestimateuktimeseriesdataset/current",
-          "retrieved_at": "2026-09-27T19:45:20+00:00"
+          "retrieved_at": "2026-09-27T19:47:03+00:00"
         },
         {
           "id": "gdp_3m",
@@ -406,7 +410,7 @@
           "comparison": "vs previous 3 months",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/gdpmonthlyestimateuktimeseriesdataset/current",
-          "retrieved_at": "2026-09-27T19:45:20+00:00"
+          "retrieved_at": "2026-09-27T19:47:03+00:00"
         },
         {
           "id": "unemployment",
@@ -417,7 +421,7 @@
           "comparison": "+0.2pp y/y",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/labourmarketstatistics",
-          "retrieved_at": "2026-09-27T19:45:20+00:00"
+          "retrieved_at": "2026-09-27T19:47:03+00:00"
         },
         {
           "id": "employment",
@@ -428,7 +432,7 @@
           "comparison": "-0.1pp y/y",
           "direction": "\u2193",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/labourmarketstatistics",
-          "retrieved_at": "2026-09-27T19:45:20+00:00"
+          "retrieved_at": "2026-09-27T19:47:03+00:00"
         },
         {
           "id": "inactivity",
@@ -439,7 +443,7 @@
           "comparison": "-0.1pp y/y",
           "direction": "\u2193",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/labourmarketstatistics",
-          "retrieved_at": "2026-09-27T19:45:20+00:00"
+          "retrieved_at": "2026-09-27T19:47:03+00:00"
         },
         {
           "id": "payrolled",
@@ -484,7 +488,7 @@
           "comparison": "Next decision 5 November 2026",
           "direction": "\u2192",
           "source_url": "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate",
-          "retrieved_at": "2026-09-27T19:45:20+00:00"
+          "retrieved_at": "2026-09-27T19:47:03+00:00"
         },
         {
           "id": "broad_money",
@@ -635,6 +639,13 @@
     "GDP per person",
     "Debt interest"
   ],
-  "recent_changes": [],
+  "recent_changes": [
+    {
+      "id": "monthly_borrowing",
+      "from": "\u00a318.3bn",
+      "to": "\u00a3-18.3bn",
+      "at": "2026-09-27T19:47:03+00:00"
+    }
+  ],
   "collector_status": "ok"
 }

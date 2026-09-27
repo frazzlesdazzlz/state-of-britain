@@ -131,5 +131,17 @@
     "checked_at": "2026-09-27T19:45:20+00:00",
     "changes": [],
     "errors": []
+  },
+  {
+    "checked_at": "2026-09-27T19:47:03+00:00",
+    "changes": [
+      {
+        "id": "monthly_borrowing",
+        "from": "\u00a318.3bn",
+        "to": "\u00a3-18.3bn",
+        "at": "2026-09-27T19:47:03+00:00"
+      }
+    ],
+    "errors": []
   }
 ]
