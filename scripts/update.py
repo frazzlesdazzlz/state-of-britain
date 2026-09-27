@@ -162,6 +162,21 @@ def setv(d,id,display,period,source,url,now,changes):
   z=str(v).replace(",","").strip()
   return z[1:] if z.startswith("+") else z
  if norm(old)!=norm(display):changes.append({"id":id,"from":old,"to":display,"at":now})
+def latest_uk_10y():
+ # Bank of England daily 10-year nominal par gilt yield, series IUDMNPY.
+ url="https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom=01/Jan/2026&Dateto=31/Dec/2099&SeriesCodes=IUDMNPY&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N"
+ req=urllib.request.Request(url,headers={"User-Agent":"State-of-Britain/1.4"})
+ with urllib.request.urlopen(req,timeout=25) as r: raw=r.read().decode("utf-8-sig","ignore")
+ rows=list(csv.reader(io.StringIO(raw))); vals=[]
+ for row in rows:
+  if len(row)<2: continue
+  try: vals.append((row[0],float(row[1])))
+  except ValueError: pass
+ if not vals: raise ValueError("UK 10Y observations missing")
+ period,value=vals[-1]
+ if not (0 <= value <= 30): raise ValueError("UK 10Y sanity check")
+ return value,period,"https://www.bankofengland.co.uk/boeapps/database/"
+
 def latest_gbp_usd():
  # Bank of England daily spot series: Sterling into US dollars.
  url="https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom=01/Jan/2026&Dateto=31/Dec/2099&SeriesCodes=XUDLGBD&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N"
@@ -190,6 +205,12 @@ def main():
  d=json.loads(DATA.read_text()); now=datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat(); changes=[]; errors=[]
  collectors=[]
  # Market data is isolated from official-stat collectors: failure never overwrites a good quote.
+ try:
+  gy,gp,gu=latest_uk_10y()
+  markets=d.setdefault("markets",{})
+  markets["uk_10y"]={"label":"UK 10-year gilt","display":format(gy,".2f")+"%","observed_at":gp,"source":"Bank of England","source_url":gu}
+ except Exception as e:
+  d["markets_status"]="uk_10y:"+type(e).__name__
  try:
   fx,fp,fu=latest_gbp_usd()
   markets=d.setdefault("markets",{})
