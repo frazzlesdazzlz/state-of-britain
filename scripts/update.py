@@ -172,6 +172,12 @@ def main():
    "source_url":"https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/hf6x/pusf",
    "points":series_points("HF6X")
   }
+  # Debt interest history uses the same official monthly series as the headline collector.
+  d.setdefault("history_series",{})["debt_interest"]={
+   "title":"Debt interest","unit":"£m","source":"ONS","series_id":"NMFX",
+   "source_url":"https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/nmfx/pusf",
+   "points":series_points("NMFX")
+  }
  except Exception as e: errors.append("history_debt_gdp:"+type(e).__name__+":"+str(e)[:80])
  try:
   cv,cp=latest_from_series("D7G7")
