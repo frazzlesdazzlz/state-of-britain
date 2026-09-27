@@ -36,26 +36,25 @@ def latest_monthly_borrowing_bulletin():
 
 def latest_gdp_bulletin():
  url="https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/gdpmonthlyestimateuk/latest"
- html=page_text(url)
- month=re.search(r"Monthly (?:real )?GDP (?:is estimated to have )?(?:grown|increased|grew) by ([0-9.]+)% in ([A-Za-z]+ 20[0-9]{2})",html,re.I)
- three=re.search(r"(?:Real gross domestic product \\(GDP\\)|GDP) (?:is estimated to have )?(?:grown|increased|grew) by ([0-9.]+)% in the three months to ([A-Za-z]+ 20[0-9]{2})",html,re.I)
+ t=page_text(url)
+ month=re.search(r"Monthly (?:real )?GDP (?:is estimated to have )?(?:grown|increased|grew) by ([0-9.]+)% in ([A-Za-z]+ 20[0-9]{2})",t,re.I)
+ three=re.search(r"Real gross domestic product \\(GDP\\) (?:is estimated to have )?(?:grown|increased|grew) by ([0-9.]+)% in the three months to ([A-Za-z]+ 20[0-9]{2})",t,re.I)
  if not month or not three: raise ValueError("GDP bulletin pattern not found")
- return float(month.group(1)),month.group(2),float(three.group(1)),three.group(2),url
+ mv=float(month.group(1)); tv=float(three.group(1))
+ if not (-30 <= mv <= 30 and -30 <= tv <= 30): raise ValueError("GDP failed sanity check")
+ return mv,month.group(2),tv,three.group(2),url
 
 def latest_labour_bulletin():
- url="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/uklabourmarket/latest"
- html=page_text(url)
- def grab(pattern):
-  m=re.search(pattern,html,re.I|re.S)
-  if not m: raise ValueError("labour bulletin pattern not found")
-  return m
- emp=grab(r"employment rate.{0,220}?(?:at|to)\\s*([0-9.]+)%.{0,120}?([A-Za-z]+ to [A-Za-z]+ 20[0-9]{2})")
- unemp=grab(r"unemployment rate.{0,220}?(?:at|to)\\s*([0-9.]+)%.{0,120}?([A-Za-z]+ to [A-Za-z]+ 20[0-9]{2})")
- inac=grab(r"(?:economic inactivity rate|inactivity rate).{0,220}?(?:at|to)\\s*([0-9.]+)%.{0,120}?([A-Za-z]+ to [A-Za-z]+ 20[0-9]{2})")
- payroll=grab(r"early estimate of payrolled employees for\\s*([A-Za-z]+ 20[0-9]{2}).{0,300}?(?:was|to)\\s*([0-9.]+) million")
+ url="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/employmentintheuk/latest"
+ t=page_text(url)
+ period=re.search(r"latest quarter \\(([A-Za-z]+ to [A-Za-z]+ 20[0-9]{2})\\)",t,re.I)
+ emp=re.search(r"employment rate.{0,260}?at ([0-9.]+)%",t,re.I)
+ unemp=re.search(r"unemployment rate.{0,260}?at ([0-9.]+)%",t,re.I)
+ inac=re.search(r"economic inactivity rate.{0,260}?at ([0-9.]+)%",t,re.I)
+ if not period or not emp or not unemp or not inac: raise ValueError("labour bulletin pattern not found")
  ev=float(emp.group(1)); uv=float(unemp.group(1)); iv=float(inac.group(1))
  if not (60 <= ev <= 90 and 0 <= uv <= 15 and 10 <= iv <= 35): raise ValueError("labour values failed sanity check")
- return (ev,emp.group(2),uv,unemp.group(2),iv,inac.group(2),float(payroll.group(2)),payroll.group(1),url)
+ return ev,period.group(1),uv,period.group(1),iv,period.group(1),None,None,url
 
 def latest_pay_bulletin():
  url="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/latest"
@@ -83,17 +82,19 @@ def latest_bank_rate():
 
 def latest_public_finances_bulletin():
  url="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/bulletins/publicsectorfinances/latest"
- html=page_text(url)
+ t=page_text(url)
  def val(pattern):
-  m=re.search(pattern,html,re.I|re.S)
+  m=re.search(pattern,t,re.I|re.S)
   if not m: raise ValueError("public finance pattern not found")
   return float(m.group(1).replace(",",""))
- debt=val(r"net debt.*?estimated at £([0-9,.]+) billion")
- dgdp=val(r"Debt.*?equivalent to ([0-9.]+)% of GDP")
- fy=val(r"Borrowing was £([0-9.]+) billion in the financial year")
- receipts=val(r"Central government total current receipts\\s+([0-9.]+)")
+ debt=val(r"net debt.{0,220}?estimated at £([0-9,.]+) billion")
+ dgdp=val(r"Debt at the end of [A-Za-z]+ 20[0-9]{2} was equivalent to ([0-9.]+)% of GDP")
+ fy=val(r"Borrowing was £([0-9.]+) billion in the financial year \\(FY\\) to")
+ receipts=val(r"gap between £([0-9.]+) billion in current receipts and £[0-9.]+ billion in current spending")
  expenditure=val(r"Central government total expenditure\\s+([0-9.]+)")
- interest=val(r"(?:Central government )?debt interest payable.*?£([0-9.]+) billion")
+ interest=val(r"debt interest payable.{0,260}?£([0-9.]+) billion")
+ if not (1000 <= debt <= 5000 and 20 <= dgdp <= 200 and 0 <= fy <= 500 and 100 <= receipts <= 1000 and 100 <= expenditure <= 1200 and 0 <= interest <= 100):
+  raise ValueError("public finance values failed sanity check")
  return debt,dgdp,fy,receipts,expenditure,interest,url
 
 def item(d,id):
@@ -131,7 +132,7 @@ def main():
   setv(d,"employment",f"{ev:.1f}%",ep,"ONS",lurl,now,changes)
   setv(d,"unemployment",f"{uv:.1f}%",up,"ONS",lurl,now,changes)
   setv(d,"inactivity",f"{iv:.1f}%",ip,"ONS",lurl,now,changes)
-  setv(d,"payrolled",f"{pv:.1f}m",pp+" early estimate","ONS / HMRC PAYE RTI",lurl,now,changes)
+  if pv is not None: setv(d,"payrolled",f"{pv:.1f}m",pp+" early estimate","ONS / HMRC PAYE RTI",lurl,now,changes)
  except Exception as e: errors.append("labour:"+type(e).__name__)
  try:
   wv,wp,rv,rp,purl=latest_pay_bulletin()
