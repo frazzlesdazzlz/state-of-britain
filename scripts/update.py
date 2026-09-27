@@ -176,6 +176,22 @@ def main():
   setv(d,"inactivity",f"{iv:.1f}%",ip,"ONS",lurl,now,changes)
  except Exception as e: errors.append("labour:"+type(e).__name__+":"+str(e)[:80])
  try:
+  hurl="https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/latest"
+  txt=page_text(hurl)
+  rm=re.search(r"Average UK monthly private rent increased by ([0-9.]+)%, to £([0-9,]+), in the 12 months to ([A-Za-z]+ 20[0-9]{2})",txt,re.I)
+  hm=re.search(r"Average UK house prices (?:increased|decreased) by ([0-9.]+)%, to £([0-9,]+), in the 12 months to ([A-Za-z]+ 20[0-9]{2})",txt,re.I)
+  if not rm or not hm: raise ValueError("housing headline data not found")
+  rry=float(rm.group(1)); rr=int(rm.group(2).replace(",","")); rrp=rm.group(3)
+  hpy=float(hm.group(1)); hp=int(hm.group(2).replace(",","")); hpp=hm.group(3)
+  if not (300 <= rr <= 5000 and 50000 <= hp <= 1000000): raise ValueError("housing sanity check")
+  setv(d,"house",f"£{hp/1000:.0f}k",hpp+" · provisional","ONS",hurl,now,changes)
+  hx=item(d,"house")
+  if hx: hx["comparison"]=f"+{hpy:.1f}% y/y"
+  setv(d,"rent",f"£{rr:,}/mo",rrp+" · provisional","ONS",hurl,now,changes)
+  rx=item(d,"rent")
+  if rx: rx["comparison"]=f"+{rry:.1f}% y/y"
+ except Exception as e: errors.append("housing:"+type(e).__name__+":"+str(e)[:80])
+ try:
   bv,bp,burl=latest_monthly_borrowing_bulletin()
   setv(d,"monthly_borrowing",f"£{bv:.1f}bn",bp,"ONS",burl,now,changes)
  except Exception as e: errors.append("monthly_borrowing:"+type(e).__name__)
