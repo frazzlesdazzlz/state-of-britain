@@ -18,7 +18,7 @@ if(d.markets&&Object.keys(d.markets).length){
 }
 {
  const hs=d.history_series||{};
- const parseYear=p=>{const m=String(p||"").match(/(19|20)\\d{2}/);return m?Number(m[0]):null};
+ const parseYear=p=>{const m=String(p||"").match(/(19|20)\d{2}/);return m?Number(m[0]):null};
  const fmt=(v,u)=>{const n=Number(v);if(!Number.isFinite(n))return esc(v);if(u==="£m")return "£"+(n>=1000?(n/1000).toFixed(1)+"bn":Math.round(n)+"m");if(u==="%")return n.toFixed(1)+"%";if(String(u).trim()==="index")return n.toFixed(1);return n.toLocaleString()};
  const chart=(key,label)=>{
   const z=hs[key], all=(z?.points||[]);
