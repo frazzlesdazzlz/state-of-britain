@@ -18,13 +18,23 @@ if(d.markets&&Object.keys(d.markets).length){
 }
 {
  const hs=d.history_series||{};
+ const parseYear=p=>{const m=String(p||"").match(/(19|20)\\d{2}/);return m?Number(m[0]):null};
+ const fmt=(v,u)=>{const n=Number(v);if(!Number.isFinite(n))return esc(v);if(u==="£m")return "£"+(n>=1000?(n/1000).toFixed(1)+"bn":Math.round(n)+"m");if(u==="%")return n.toFixed(1)+"%";if(String(u).trim()==="index")return n.toFixed(1);return n.toLocaleString()};
  const chart=(key,label)=>{
-  const z=hs[key], pts=(z?.points||[]);
-  if(!pts.length)return '<div class="histcard"><b>'+esc(label)+'</b><small>Official history pending</small></div>';
-  const vals=pts.map(p=>Number(p.value)).filter(Number.isFinite), lo=Math.min(...vals), hi=Math.max(...vals), w=300,hg=92,pad=8,den=(hi-lo)||1;
-  const path=vals.map((v,i)=>(i?'L':'M')+(pad+i*(w-2*pad)/Math.max(1,vals.length-1)).toFixed(1)+' '+(hg-pad-(v-lo)*(hg-2*pad)/den).toFixed(1)).join(' ');
-  const last=pts[pts.length-1];
-  return '<div class="histcard"><div class="histhead"><b>'+esc(label)+'</b><span>'+esc(last.value)+(z.unit||'')+'</span></div><svg viewBox="0 0 300 92" role="img" aria-label="'+esc(label)+' official history"><path d="'+path+'" fill="none" stroke="currentColor" stroke-width="2"/></svg><small>'+esc(pts[0].period)+' → '+esc(last.period)+' · '+esc(z.source||'official source')+'</small></div>';
+  const z=hs[key], all=(z?.points||[]);
+  if(!all.length)return '<div class="histcard pending"><b>'+esc(label)+'</b><small>Verified historical series pending — no estimate shown.</small></div>';
+  const ranges=[1,5,10,25], latestYear=parseYear(all[all.length-1].period), unit=z.unit||"";
+  const make=(years,active)=>{
+   let pts=all;
+   if(latestYear&&years)pts=all.filter(p=>{const y=parseYear(p.period);return y&&y>=latestYear-years});
+   if(pts.length<2)pts=all.slice(-Math.min(all.length,24));
+   const vals=pts.map(p=>Number(p.value)).filter(Number.isFinite), lo=Math.min(...vals), hi=Math.max(...vals), w=300,hg=126,L=42,R=8,T=10,B=24,den=(hi-lo)||1;
+   const path=pts.map((p,i)=>{const v=Number(p.value),x=L+i*(w-L-R)/Math.max(1,pts.length-1),y=T+(hi-v)*(hg-T-B)/den;return (i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)}).join(' ');
+   const first=pts[0],last=pts[pts.length-1],mid=(lo+hi)/2;
+   return '<div class="chartview'+(active?' active':'')+'" data-range="'+years+'"><svg viewBox="0 0 300 126" role="img" aria-label="'+esc(label)+' '+years+' year history"><line x1="'+L+'" y1="'+T+'" x2="'+L+'" y2="'+(hg-B)+'" class="axis"/><line x1="'+L+'" y1="'+(hg-B)+'" x2="'+(w-R)+'" y2="'+(hg-B)+'" class="axis"/><line x1="'+L+'" y1="'+(T+(hg-T-B)/2)+'" x2="'+(w-R)+'" y2="'+(T+(hg-T-B)/2)+'" class="gridline"/><text x="2" y="'+(T+4)+'">'+esc(fmt(hi,unit))+'</text><text x="2" y="'+(T+(hg-T-B)/2+4)+'">'+esc(fmt(mid,unit))+'</text><text x="2" y="'+(hg-B+4)+'">'+esc(fmt(lo,unit))+'</text><text x="'+L+'" y="'+(hg-5)+'">'+esc(first.period)+'</text><text x="'+(w-R)+'" y="'+(hg-5)+'" text-anchor="end">'+esc(last.period)+'</text><path d="'+path+'" class="series"/></svg><div class="histcompare"><span>'+esc(first.period)+' <b>'+esc(fmt(first.value,unit))+'</b></span><span>→</span><span>'+esc(last.period)+' <b>'+esc(fmt(last.value,unit))+'</b></span></div></div>';
+  };
+  const latest=all[all.length-1];
+  return '<div class="histcard"><div class="histhead"><div><b>'+esc(label)+'</b><small>'+esc(z.source||"official source")+'</small></div><span>'+esc(fmt(latest.value,unit))+'</span></div><div class="ranges">'+ranges.map((r,i)=>'<button type="button" class="'+(r===10?'active':'')+'" data-years="'+r+'">'+r+'Y</button>').join("")+'</div>'+ranges.map(r=>make(r,r===10)).join("")+'</div>';
  };
- h+='<section id="direction-history"><h2 class="section">Direction & history</h2><div class="historycharts">'+chart("debt_gdp","Debt / GDP")+chart("debt_interest","Debt interest")+chart("real_pay","Real pay")+chart("house_prices_pay","House prices / pay")+chart("gdp_per_person","GDP per person")+'</div><div class="note">Charts show stored official observations; missing series are labelled rather than estimated.</div></section>';
-}document.querySelector("#app").innerHTML=h}).catch(()=>document.querySelector("#checked").textContent="Dashboard data unavailable");if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js");
+ h+='<section id="direction-history"><h2 class="section">Direction & history</h2><div class="historycharts">'+chart("debt_gdp","Debt / GDP")+chart("debt_interest","Debt interest")+chart("real_pay","Real pay")+chart("house_prices_pay","House prices / pay")+chart("gdp_per_person","GDP per person")+'</div><div class="note">Use 1Y, 5Y, 10Y or 25Y to change the view. Axes use the actual range of the selected official observations. Missing series are not estimated.</div></section>';
+}document.querySelector("#app").innerHTML=h;document.querySelectorAll(".ranges").forEach(r=>r.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const card=r.closest(".histcard");r.querySelectorAll("button").forEach(x=>x.classList.toggle("active",x===b));card.querySelectorAll(".chartview").forEach(v=>v.classList.toggle("active",v.dataset.range===b.dataset.years))}))}).catch(()=>document.querySelector("#checked").textContent="Dashboard data unavailable");if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js");
