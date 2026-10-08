@@ -1,36 +1,27 @@
 name: Update State of Britain
 on:
   schedule:
-    - cron: "35 8,9 * * 1-5"
-    - cron: "5 11,12 * * 1-5"
-    - cron: "5 16,17 * * 1-5"
+    # UTC times; UK local time shifts by one hour at daylight saving changes.
+    # Do not reject delayed GitHub jobs based on their start minute.
+    - cron: "5 8,11,16 * * 1-5"
   workflow_dispatch:
 permissions:
   contents: write
+concurrency:
+  group: update-state-of-britain
+  cancel-in-progress: false
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Check UK schedule
-        id: clock
-        shell: bash
-        run: |
-          NOW=$(TZ=Europe/London date +%H:%M)
-          echo "uk_time=$NOW" >> "$GITHUB_OUTPUT"
-          if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" || "$NOW" == "09:35" || "$NOW" == "12:05" || "$NOW" == "17:05" ]]; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "run=false" >> "$GITHUB_OUTPUT"
-          fi
       - name: Update data
-        if: steps.clock.outputs.run == 'true'
         run: python scripts/update.py
       - name: Commit check
-        if: steps.clock.outputs.run == 'true'
         run: |
           git config user.name "state-of-britain-bot"
           git config user.email "actions@users.noreply.github.com"
