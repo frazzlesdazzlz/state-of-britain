@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "last_checked": "2026-10-08T15:44:23+00:00",
+  "last_checked": "2026-10-08T21:09:56+00:00",
   "changed_count": 0,
   "groups": [
     {
@@ -15,7 +15,7 @@
           "comparison": "+\u00a378.5bn y/y",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/hf6w/pusf",
-          "retrieved_at": "2026-10-08T15:44:23+00:00"
+          "retrieved_at": "2026-10-08T21:09:56+00:00"
         },
         {
           "id": "debt_gdp",
@@ -26,7 +26,7 @@
           "comparison": "-1.3pp y/y",
           "direction": "\u2193",
           "source_url": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/hf6x/pusf",
-          "retrieved_at": "2026-10-08T15:44:23+00:00"
+          "retrieved_at": "2026-10-08T21:09:56+00:00"
         },
         {
           "id": "monthly_borrowing",
@@ -37,7 +37,7 @@
           "comparison": "+\u00a32.9bn y/y",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/j5ii/pusf",
-          "retrieved_at": "2026-10-08T15:44:23+00:00"
+          "retrieved_at": "2026-10-08T21:09:56+00:00"
         },
         {
           "id": "fy_borrowing",
@@ -84,7 +84,7 @@
           "comparison": "+\u00a30.4bn y/y",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/nmfx/pusf",
-          "retrieved_at": "2026-10-08T15:44:23+00:00"
+          "retrieved_at": "2026-10-08T21:09:56+00:00"
         }
       ]
     },
@@ -341,7 +341,7 @@
           "comparison": "2.9% previous month",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7g7/mm23",
-          "retrieved_at": "2026-10-08T15:44:23+00:00"
+          "retrieved_at": "2026-10-08T21:09:56+00:00"
         },
         {
           "id": "pay",
@@ -352,7 +352,7 @@
           "comparison": "before tax, GB",
           "direction": "",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/latest",
-          "retrieved_at": "2026-10-08T15:44:23+00:00"
+          "retrieved_at": "2026-10-08T21:09:56+00:00"
         },
         {
           "id": "real_pay",
@@ -363,7 +363,7 @@
           "comparison": "y/y, CPIH-adjusted",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/latest",
-          "retrieved_at": "2026-10-08T15:44:23+00:00"
+          "retrieved_at": "2026-10-08T21:09:56+00:00"
         },
         {
           "id": "house",
@@ -374,7 +374,7 @@
           "comparison": "+1.4% y/y",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/latest",
-          "retrieved_at": "2026-10-08T15:44:23+00:00"
+          "retrieved_at": "2026-10-08T21:09:56+00:00"
         },
         {
           "id": "rent",
@@ -385,7 +385,7 @@
           "comparison": "+3.8% y/y",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/latest",
-          "retrieved_at": "2026-10-08T15:44:23+00:00"
+          "retrieved_at": "2026-10-08T21:09:56+00:00"
         }
       ]
     },
@@ -401,7 +401,7 @@
           "comparison": "vs June",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/gdpmonthlyestimateuktimeseriesdataset/current",
-          "retrieved_at": "2026-10-08T15:44:23+00:00"
+          "retrieved_at": "2026-10-08T21:09:56+00:00"
         },
         {
           "id": "gdp_3m",
@@ -412,7 +412,7 @@
           "comparison": "vs previous 3 months",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/gdpmonthlyestimateuktimeseriesdataset/current",
-          "retrieved_at": "2026-10-08T15:44:23+00:00"
+          "retrieved_at": "2026-10-08T21:09:56+00:00"
         },
         {
           "id": "unemployment",
@@ -423,7 +423,7 @@
           "comparison": "+0.2pp y/y",
           "direction": "\u2191",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/labourmarketstatistics",
-          "retrieved_at": "2026-10-08T15:44:23+00:00"
+          "retrieved_at": "2026-10-08T21:09:56+00:00"
         },
         {
           "id": "employment",
@@ -434,7 +434,7 @@
           "comparison": "-0.1pp y/y",
           "direction": "\u2193",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/labourmarketstatistics",
-          "retrieved_at": "2026-10-08T15:44:23+00:00"
+          "retrieved_at": "2026-10-08T21:09:56+00:00"
         },
         {
           "id": "inactivity",
@@ -445,7 +445,7 @@
           "comparison": "-0.1pp y/y",
           "direction": "\u2193",
           "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/labourmarketstatistics",
-          "retrieved_at": "2026-10-08T15:44:23+00:00"
+          "retrieved_at": "2026-10-08T21:09:56+00:00"
         },
         {
           "id": "payrolled",
@@ -490,7 +490,7 @@
           "comparison": "Next decision 5 November 2026",
           "direction": "\u2192",
           "source_url": "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate",
-          "retrieved_at": "2026-10-08T15:44:23+00:00"
+          "retrieved_at": "2026-10-08T21:09:56+00:00"
         },
         {
           "id": "broad_money",
@@ -5002,12 +5002,12 @@
     },
     "bitcoin_gbp": {
       "label": "Bitcoin / GBP",
-      "display": "\u00a361,423",
-      "change_24h": -2.6,
-      "observed_at": "2026-10-08T15:42:50+00:00",
+      "display": "\u00a361,691",
+      "change_24h": -2.17,
+      "observed_at": "2026-10-08T21:09:15+00:00",
       "source": "CoinGecko",
       "source_url": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=gbp&include_24hr_change=true&include_last_updated_at=true"
     }
   },
-  "markets_last_checked": "2026-10-08T15:44:23+00:00"
+  "markets_last_checked": "2026-10-08T21:09:56+00:00"
 }
