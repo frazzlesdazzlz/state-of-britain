@@ -5,6 +5,10 @@ on:
     # Do not reject delayed GitHub jobs based on their start minute.
     - cron: "5 8,11,16 * * 1-5"
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/update.yml"
 permissions:
   contents: write
 concurrency:
