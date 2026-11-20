@@ -601,5 +601,37 @@
     "errors": [
       "pay:ValueError"
     ]
+  },
+  {
+    "checked_at": "2026-11-20T16:48:38+00:00",
+    "changes": [
+      {
+        "id": "monthly_borrowing",
+        "from": "\u00a324.5bn",
+        "to": "\u00a317.0bn",
+        "at": "2026-11-20T16:48:38+00:00"
+      },
+      {
+        "id": "debt",
+        "from": "\u00a33.005tn",
+        "to": "\u00a33.058tn",
+        "at": "2026-11-20T16:48:38+00:00"
+      },
+      {
+        "id": "debt_gdp",
+        "from": "94.0%",
+        "to": "95.8%",
+        "at": "2026-11-20T16:48:38+00:00"
+      },
+      {
+        "id": "debt_interest",
+        "from": "\u00a310.9bn",
+        "to": "\u00a311.2bn",
+        "at": "2026-11-20T16:48:38+00:00"
+      }
+    ],
+    "errors": [
+      "pay:ValueError"
+    ]
   }
 ]
